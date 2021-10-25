@@ -617,18 +617,19 @@
                 
                 
                 <h1 id="yourgamelib">YourGameLib</h1>
-<p>User functions that are linked to and called by the yourgame library framework. </p>
 <h1 id="user-code">User Code</h1>
-<p>The yourgame library expects the functions in the <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a> namespace to be implemented. They are called by the yourgame library framework at specific moments. The underlying application logic (main function) is provided by the framework. These user functions could be interpreted as "callbacks, that are already registered". Implementing these functions is mandatory and makes the user project executable together with the yourgame library.</p>
+<p>The Namespace <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a>: User functions that are linked to and called by the yourgame library framework.</p>
 <ul>
 <li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-init">mygame::init(int argc, char *argv[])</a> - user project initialization</li>
 <li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-tick">mygame::tick()</a> - user project update/draw (once pre frame)</li>
-<li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-shutdown">mygame::shutdown()</a> - user project clean-up</li>
+<li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-shutdown">mygame::shutdown()</a> - user project clean-up
+The yourgame library expects the functions in the <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a> namespace to be implemented. They are called by the yourgame library framework at specific moments. The underlying application logic (main function) is provided by the framework. Implementing these functions is mandatory and makes the user project executable together with the yourgame library.</li>
 </ul>
+<p>Below is a sequence diagram to illustrate YourGameLib and User Code interaction.</p>
 <h1 id="api">API</h1>
 <p>The yourgame library consists of a couple of modules, organized in namespaces. </p>
 <hr />
-<p>Updated on 2021-10-23 at 19:54:12 +0000</p>
+<p>Updated on 2021-10-25 at 19:56:48 +0000</p>
                 
                   
                 
