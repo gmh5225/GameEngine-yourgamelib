@@ -626,10 +626,31 @@
 The yourgame library expects the functions in the <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a> namespace to be implemented. They are called by the yourgame library framework at specific moments. The underlying application logic (main function) is provided by the framework. Implementing these functions is mandatory and makes the user project executable together with the yourgame library.</li>
 </ul>
 <p>Below is a sequence diagram to illustrate YourGameLib and User Code interaction.</p>
+<p>"Operating System\nPlatform" -&gt; YourGameLib: start application
+YourGameLib -&gt; YourGameLib: initialize framework, gl, ...
+YourGameLib -&gt; "User Code": <strong>""mygame::init(...)""</strong>
+"User Code" -&gt; "User Code": //load assets, ...//
+"User Code" --&gt; YourGameLib
+loop until want to exit
+  YourGameLib -&gt; YourGameLib: update timing, get input, ...
+  YourGameLib -&gt; "User Code": <strong>""mygame::tick()""</strong>
+  "User Code" -&gt; "User Code": //advance world, render, ...//
+  opt want to exit
+    "User Code" -&gt; YourGameLib: ""yourgame::control::exit()""
+  end
+  "User Code" --&gt; YourGameLib
+  YourGameLib -&gt; YourGameLib: swap gl buffers, ...
+end
+YourGameLib -&gt; YourGameLib: terminate framework, gl, ...
+note right: todo: terminating framework\nbefore ""mygame::shutdown()""\nseems wrong
+YourGameLib -&gt; "User Code": <strong>""mygame::shutdown(...)""</strong>
+"User Code" -&gt; "User Code": //delete assets, ...//
+"User Code" --&gt; YourGameLib
+YourGameLib --&gt; "Operating System\nPlatform": goodbye</p>
 <h1 id="api">API</h1>
 <p>The yourgame library consists of a couple of modules, organized in namespaces. </p>
 <hr />
-<p>Updated on 2021-10-25 at 19:56:48 +0000</p>
+<p>Updated on 2021-10-25 at 19:59:11 +0000</p>
                 
                   
                 
