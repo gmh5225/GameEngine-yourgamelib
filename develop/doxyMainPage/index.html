@@ -379,52 +379,55 @@
 
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Code Fundamentals
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
   
     
     <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
       
       
-        <label class="md-nav__link" for="__nav_6">
+        <label class="md-nav__link" for="__nav_5">
           API
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" aria-label="API" data-md-level="1">
-        <label class="md-nav__title" for="__nav_6">
+        <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           API
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Fundamentals/" class="md-nav__link">
+        Fundamentals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Namespaces/namespacemygame/" class="md-nav__link">
+        mygame (User Code)
+      </a>
+    </li>
+  
+
+            
           
             
               
@@ -617,40 +620,9 @@
                 
                 
                 <h1 id="yourgamelib">YourGameLib</h1>
-<h1 id="user-code">User Code</h1>
-<p>The Namespace <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a>: User functions that are linked to and called by the yourgame library framework.</p>
-<ul>
-<li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-init">mygame::init(int argc, char *argv[])</a> - user project initialization</li>
-<li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-tick">mygame::tick()</a> - user project update/draw (once pre frame)</li>
-<li><a href="/yourgamelib/develop/Namespaces/namespacemygame/#function-shutdown">mygame::shutdown()</a> - user project clean-up
-The yourgame library expects the functions in the <a href="/yourgamelib/develop/Namespaces/namespacemygame/">mygame</a> namespace to be implemented. They are called by the yourgame library framework at specific moments. The underlying application logic (main function) is provided by the framework. Implementing these functions is mandatory and makes the user project executable together with the yourgame library.</li>
-</ul>
-<p>Below is a sequence diagram to illustrate YourGameLib and User Code interaction.</p>
-<p>"Operating System\nPlatform" -&gt; YourGameLib: start application
-YourGameLib -&gt; YourGameLib: initialize framework, gl, ...
-YourGameLib -&gt; "User Code": <strong>""mygame::init(...)""</strong>
-"User Code" -&gt; "User Code": //load assets, ...//
-"User Code" --&gt; YourGameLib
-loop until want to exit
-  YourGameLib -&gt; YourGameLib: update timing, get input, ...
-  YourGameLib -&gt; "User Code": <strong>""mygame::tick()""</strong>
-  "User Code" -&gt; "User Code": //advance world, render, ...//
-  opt want to exit
-    "User Code" -&gt; YourGameLib: ""yourgame::control::exit()""
-  end
-  "User Code" --&gt; YourGameLib
-  YourGameLib -&gt; YourGameLib: swap gl buffers, ...
-end
-YourGameLib -&gt; YourGameLib: terminate framework, gl, ...
-note right: todo: terminating framework\nbefore ""mygame::shutdown()""\nseems wrong
-YourGameLib -&gt; "User Code": <strong>""mygame::shutdown(...)""</strong>
-"User Code" -&gt; "User Code": //delete assets, ...//
-"User Code" --&gt; YourGameLib
-YourGameLib --&gt; "Operating System\nPlatform": goodbye</p>
-<h1 id="api">API</h1>
-<p>The yourgame library consists of a couple of modules, organized in namespaces. </p>
+<p>YourGameLib Doxygen Mainpage </p>
 <hr />
-<p>Updated on 2021-10-25 at 19:59:11 +0000</p>
+<p>Updated on 2021-10-26 at 17:42:00 +0000</p>
                 
                   
                 
@@ -668,41 +640,6 @@ YourGameLib --&gt; "Operating System\nPlatform": goodbye</p>
       
         
 <footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../Manual/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Manual" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              Manual
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../Namespaces/namespaceyourgame/" class="md-footer__link md-footer__link--next" aria-label="Next: yourgame" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              yourgame
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
