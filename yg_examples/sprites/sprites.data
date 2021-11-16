@@ -1,3 +1,17 @@
+v -0.5 -0.5 0.0
+v 0.5 -0.5 0.0
+v 0.5 0.5 0.0
+v -0.5 0.5 0.0
+vt 0.0 0.0
+vt 1.0 0.0
+vt 1.0 1.0
+vt 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+f 1/1/1 2/2/2 3/3/3
+f 1/1/1 3/3/3 4/4/4
 {
 	"textures":[
 		{
@@ -35,28 +49,20 @@
 }// meant to be compatible with glsl 330 and 300 es
 // desired #version has to be prepended befor compiling
 
-layout(location = 0) in vec3 inPosition;
-layout(location = 1) in vec3 inNormal;
-layout(location = 2) in vec2 inTexcoords;
-layout(location = 3) in vec3 inColor;
+precision mediump float; // required for es
 
-out vec3 vOutPos;
-out vec3 vOutNorm;
-out vec2 vOutTex;
-out vec3 vOutCol;
+in vec2 vOutTex;
 
-uniform mat4 mvpMat;
-uniform mat4 modelMat;
-uniform mat3 normalMat;
-uniform vec4 subtex;
+layout(location = 0) out vec4 color;
+
+uniform sampler2D textureDiffuse;
 
 void main()
 {
-    vOutPos = (modelMat * vec4(inPosition, 1.0)).xyz;
-    vOutNorm = normalMat * inNormal;
-    vOutTex = (inTexcoords * vec2(subtex[0], subtex[1])) + vec2(subtex[2], subtex[3]);
-    vOutCol = inColor;
-    gl_Position = mvpMat * vec4(inPosition, 1.0);
+    vec4 texColor = texture(textureDiffuse, vOutTex);
+    if (texColor.a < 1.0)
+        discard;
+    color = texColor;
 }
 // meant to be compatible with glsl 330 and 300 es
 // desired #version has to be prepended befor compiling
@@ -71,20 +77,6 @@ void main()
 {
     color = vec4(vOutCol, 1.0);
 }
-v -0.5 -0.5 0.0
-v 0.5 -0.5 0.0
-v 0.5 0.5 0.0
-v -0.5 0.5 0.0
-vt 0.0 0.0
-vt 1.0 0.0
-vt 1.0 1.0
-vt 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-f 1/1/1 2/2/2 3/3/3
-f 1/1/1 3/3/3 4/4/4
 This project uses open source software, the licenses are given below.
 Platform: web
 
@@ -258,24 +250,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-precision mediump float; // required for es
-
-in vec2 vOutTex;
-
-layout(location = 0) out vec4 color;
-
-uniform sampler2D textureDiffuse;
-
-void main()
-{
-    vec4 texColor = texture(textureDiffuse, vOutTex);
-    if (texColor.a < 1.0)
-        discard;
-    color = texColor;
-}
 v -10 0 0 0.2 0 0
 v  10 0 0 1 0 0
 v 0 -10 0 0 0.2 0
@@ -412,4 +386,29 @@ l 85 86
    IHDR   @   @   ·ì   <PLTE   ?‰²ÄMX§yÿ €ó†0ïïïpçñÇôdÿÿÿ$	ƒğÜu¡ìA7ÍÊÊÊ¾55‘_3Ñ0÷îYYÍ6Å¯ñõ   tRNS @æØf  ìIDATxÅ”rã …A&&¶â¦÷¿ëêl×ËtWd¦·‚Œôô("ÿB8¦iÒ?.Œç½E¤Ïã‘ ºà4MI+<ìõÑÏµ”PÓíÆ‹)}|¤”¦Z×ö
 ’şûı÷K²,¨!I×¡í'ãîW@® Í9g$h]ÛËB ó, k¸äZH€yû2ƒH¾@–ÛÏµ°ÖµÆ¦Åuˆç¼‹¨ußD'hŠ¿ä«ş§öØt-
 ê(ç•¢ıpé×£™®åÈ„² 2¡¬ˆLØıpé7MW<°`5@ê Œ`òÈ°`5@êL_“§Øõ¿L_›qgˆı;CüIÆ®ˆgøÂVßïÿn?ùÀ0;>ùw@rêïA_¦Gpö{ˆC!€fWåIQœWàï"ú¦"~Àİnà¨ æƒ¡!¾AÆ €¯°QÿËX6D¡Ê¸¡ó°yæ? úÀ;Äq€<CFÒşO
-€åÑG ¸Ày¸e&È|€œó ò[†8"£ö	Q^#>x!úä‘ñ…Î#T¹ı— äƒwqüu3á‹Âyùş/DAmÀ çª‘¸İ0Œ ÔC‘ñdÑ¨l]VQ    IEND®B`‚
+€åÑG ¸Ày¸e&È|€œó ò[†8"£ö	Q^#>x!úä‘ñ…Î#T¹ı— äƒwqüu3á‹Âyùş/DAmÀ çª‘¸İ0Œ ÔC‘ñdÑ¨l]VQ    IEND®B`‚// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+layout(location = 0) in vec3 inPosition;
+layout(location = 1) in vec3 inNormal;
+layout(location = 2) in vec2 inTexcoords;
+layout(location = 3) in vec3 inColor;
+
+out vec3 vOutPos;
+out vec3 vOutNorm;
+out vec2 vOutTex;
+out vec3 vOutCol;
+
+uniform mat4 mvpMat;
+uniform mat4 modelMat;
+uniform mat3 normalMat;
+uniform vec4 subtex;
+
+void main()
+{
+    vOutPos = (modelMat * vec4(inPosition, 1.0)).xyz;
+    vOutNorm = normalMat * inNormal;
+    vOutTex = (inTexcoords * vec2(subtex[0], subtex[1])) + vec2(subtex[2], subtex[3]);
+    vOutCol = inColor;
+    gl_Position = mvpMat * vec4(inPosition, 1.0);
+}
