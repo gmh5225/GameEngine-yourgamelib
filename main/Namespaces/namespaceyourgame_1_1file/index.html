@@ -592,6 +592,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-getfileextension" class="md-nav__link">
+    function getFileExtension
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-writeassetfile" class="md-nav__link">
     function writeAssetFile
   </a>
@@ -608,6 +615,13 @@
           <li class="md-nav__item">
   <a href="#function-writeprojectfile" class="md-nav__link">
     function writeProjectFile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-writefile" class="md-nav__link">
+    function writeFile
   </a>
   
 </li>
@@ -842,6 +856,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-getfileextension" class="md-nav__link">
+    function getFileExtension
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-writeassetfile" class="md-nav__link">
     function writeAssetFile
   </a>
@@ -858,6 +879,13 @@
           <li class="md-nav__item">
   <a href="#function-writeprojectfile" class="md-nav__link">
     function writeProjectFile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-writefile" class="md-nav__link">
+    function writeFile
   </a>
   
 </li>
@@ -935,6 +963,10 @@
 <td><strong><a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-getfilename">getFileName</a></strong>(const std::string &amp; filepath)<br>returns the actual file name of a file, filepath points to</td>
 </tr>
 <tr>
+<td>std::string</td>
+<td><strong><a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-getfileextension">getFileExtension</a></strong>(const std::string &amp; filepath)<br>returns the file extension</td>
+</tr>
+<tr>
 <td>int</td>
 <td><strong><a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-writeassetfile">writeAssetFile</a></strong>(const std::string &amp; filename, const void * data, size_t numBytes)<br>writes numBytes bytes from data to a file called filename in the asset file location. overwrites the file if it exists</td>
 </tr>
@@ -945,6 +977,10 @@
 <tr>
 <td>int</td>
 <td><strong><a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-writeprojectfile">writeProjectFile</a></strong>(const std::string &amp; filename, const void * data, size_t numBytes)<br>writes numBytes bytes from data to a file called filename in the project file location. overwrites the file if it exists</td>
+</tr>
+<tr>
+<td>int</td>
+<td><strong><a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-writefile">writeFile</a></strong>(const std::string &amp; filename, const void * data, size_t numBytes)<br>writes numBytes bytes from data to a file called filename, destination path determined by prefix ("a//", etc.), see <a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-readfile">readFile()</a>. overwrites the file if it exists.</td>
 </tr>
 <tr>
 <td>std::vector&lt; std::string &gt;</td>
@@ -1031,6 +1067,18 @@
 <li>example: "a//file2.bin" returns "file2.bin"</li>
 <li>example: "/home/user/file3.bin" returns "file3.bin" </li>
 </ul>
+<h3 id="function-getfileextension">function getFileExtension</h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">getFileExtension</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">filepath</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>returns the file extension </p>
+<ul>
+<li>example: "file1.bin" returns "bin"</li>
+<li>example: "a//texture.png" returns "png"</li>
+<li>example: ".gitignore" returns "gitignore"</li>
+<li>example: "Makefile" returns "" </li>
+</ul>
 <h3 id="function-writeassetfile">function writeAssetFile</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">writeAssetFile</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"></span>
@@ -1055,6 +1103,15 @@
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
 <p>writes numBytes bytes from data to a file called filename in the project file location. overwrites the file if it exists </p>
+<h3 id="function-writefile">function writeFile</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">int</span><span class="w"> </span><span class="n">writeFile</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">filename</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">size_t</span><span class="w"> </span><span class="n">numBytes</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>writes numBytes bytes from data to a file called filename, destination path determined by prefix ("a//", etc.), see <a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-readfile">readFile()</a>. overwrites the file if it exists. </p>
+<p><strong>Attention</strong>: filename requires a prefix, such as "a//". otherwise, writing is omitted. </p>
 <h3 id="function-ls">function ls</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ls</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">pattern</span><span class="w"></span>
@@ -1062,7 +1119,7 @@
 </code></pre></div>
 <p>returns list of directory content. accepts prefixes like <a href="/yourgamelib/main/Namespaces/namespaceyourgame_1_1file/#function-readfile">readFile()</a> does. accepts wildcard "*" for files (after last / in pattern) </p>
 <hr />
-<p>Updated on 2022-01-11 at 20:17:31 +0000</p>
+<p>Updated on 2022-01-12 at 20:33:28 +0000</p>
 
               
             </article>
