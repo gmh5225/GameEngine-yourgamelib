@@ -1,3 +1,35 @@
+v -0.5 -0.5 0.0
+v 0.5 -0.5 0.0
+v 0.5 0.5 0.0
+v -0.5 0.5 0.0
+vt 0.0 0.0
+vt 1.0 0.0
+vt 1.0 1.0
+vt 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+vn 0.0 0.0 1.0
+f 1/1/1 2/2/2 3/3/3
+f 1/1/1 3/3/3 4/4/4
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+precision mediump float; // required for es
+
+in vec2 vOutTex;
+
+layout(location = 0) out vec4 color;
+
+uniform sampler2D textureDiffuse;
+
+void main()
+{
+    vec4 texColor = texture(textureDiffuse, vOutTex);
+    if (texColor.a < 1.0)
+        discard;
+    color = texColor;
+}
 {
 	"textures":[
 		{
@@ -37,18 +69,13 @@
 
 precision mediump float; // required for es
 
-in vec2 vOutTex;
+in vec3 vOutCol;
 
 layout(location = 0) out vec4 color;
 
-uniform sampler2D textureDiffuse;
-
 void main()
 {
-    vec4 texColor = texture(textureDiffuse, vOutTex);
-    if (texColor.a < 1.0)
-        discard;
-    color = texColor;
+    color = vec4(vOutCol, 1.0);
 }
 // meant to be compatible with glsl 330 and 300 es
 // desired #version has to be prepended befor compiling
@@ -75,19 +102,6 @@ void main()
     vOutTex = (inTexcoords * vec2(subtex[0], subtex[1])) + vec2(subtex[2], subtex[3]);
     vOutCol = inColor;
     gl_Position = mvpMat * vec4(inPosition, 1.0);
-}
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-precision mediump float; // required for es
-
-in vec3 vOutCol;
-
-layout(location = 0) out vec4 color;
-
-void main()
-{
-    color = vec4(vOutCol, 1.0);
 }
 v -10 0 0 0.2 0 0
 v  10 0 0 1 0 0
@@ -393,20 +407,6 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-v -0.5 -0.5 0.0
-v 0.5 -0.5 0.0
-v 0.5 0.5 0.0
-v -0.5 0.5 0.0
-vt 0.0 0.0
-vt 1.0 0.0
-vt 1.0 1.0
-vt 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-vn 0.0 0.0 1.0
-f 1/1/1 2/2/2 3/3/3
-f 1/1/1 3/3/3 4/4/4
 ‰PNG
 
    IHDR   @   @   ·ì   <PLTE   ?‰²ÄMX§yÿ €ó†0ïïïpçñÇôdÿÿÿ$	ƒðÜu¡ìA7ÍÊÊÊ¾55‘_3Ñ0÷îYYÍ6Å¯ñõ   tRNS @æØf  ìIDATxÅ”rã …A&&¶â¦÷¿ëêl×ËtWd¦·‚Œôôž("ÿB8¦iÒ?.Œç½E¤Ïã‘ ºà4MI+<ìõÑÏµ”PÓíÆ‹)}|¤”¦Z×ö

@@ -1,126 +1,3 @@
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-layout(location = 0) in vec3 inPosition;
-layout(location = 1) in vec3 inNormal;
-layout(location = 2) in vec2 inTexcoords;
-layout(location = 3) in vec3 inColor;
-layout(location = 4) in mat4 inInstModelMat;
-
-out vec3 vOutPos;
-out vec3 vOutNorm;
-out vec2 vOutTex;
-out vec3 vOutCol;
-
-uniform mat4 vpMat;
-
-void main()
-{
-    vOutPos = (inInstModelMat * vec4(inPosition, 1.0)).xyz;
-    // todo: is it reasonable to calc the normal matrix here?
-    vOutNorm = transpose(inverse(mat3(inInstModelMat))) * inNormal;
-    vOutTex = inTexcoords;
-    vOutCol = inColor;
-    gl_Position = vpMat * inInstModelMat * vec4(inPosition, 1.0);
-}
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-precision mediump float; // required for es
-
-in vec3 vOutPos;
-in vec3 vOutNorm;
-in vec2 vOutTex;
-
-layout(location = 0) out vec4 color;
-
-uniform vec3 lightDiffuse;
-uniform vec3 lightPosition;
-uniform sampler2D textureDiffuse;
-
-void main()
-{
-    vec3 lightDir = normalize(lightPosition - vOutPos);
-    float diff = max(dot(normalize(vOutNorm), lightDir), 0.0);
-    
-    color = vec4(vec3(texture(textureDiffuse, vOutTex)) * lightDiffuse * (diff + 0.2), 1.0);
-}
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-precision mediump float; // required for es
-
-in vec3 vOutPos;
-in vec3 vOutNorm;
-in vec3 vOutCol;
-
-layout(location = 0) out vec4 color;
-
-uniform vec3 lightPosition;
-uniform vec3 lightDiffuse;
-
-void main()
-{
-    vec3 lightDir = normalize(lightPosition - vOutPos);
-    float diff = max(dot(normalize(vOutNorm), lightDir), 0.0);
-
-    color = vec4(vOutCol * lightDiffuse * (diff + 0.2), 1.0);
-}
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-layout(location = 0) in vec3 inPosition;
-layout(location = 1) in vec3 inNormal;
-layout(location = 2) in vec2 inTexcoords;
-layout(location = 3) in vec3 inColor;
-
-out vec3 vOutPos;
-out vec3 vOutNorm;
-out vec2 vOutTex;
-out vec3 vOutCol;
-
-uniform mat4 mvpMat;
-uniform mat4 modelMat;
-uniform mat3 normalMat;
-
-void main()
-{
-    vOutPos = (modelMat * vec4(inPosition, 1.0)).xyz;
-    vOutNorm = normalMat * inNormal;
-    vOutTex = inTexcoords;
-    vOutCol = inColor;
-    gl_Position = mvpMat * vec4(inPosition, 1.0);
-}
-# Created by Kenney (www.kenney.nl)
-
-newmtl metal
-Kd 0.7960784 0.8156863 0.8784314
-
-newmtl dark
-Kd 0.1568628 0.1960784 0.2392157
-
-newmtl darkMetal
-Kd 0.5921569 0.6352941 0.7686275
-
-newmtl purple
-Kd 0.6117647 0.4392157 0.9607843
-
-newmtl _defaultMat
-Kd 1 1 1
-
-// meant to be compatible with glsl 330 and 300 es
-// desired #version has to be prepended befor compiling
-
-precision mediump float; // required for es
-
-in vec3 vOutCol;
-
-layout(location = 0) out vec4 color;
-
-void main()
-{
-    color = vec4(vOutCol, 1.0);
-}
 # Created by Kenney (www.kenney.nl)
 
 mtllib blasterD.mtl
@@ -1452,6 +1329,140 @@ f 138/217/3 156/473/3 144/216/3
 f 138/217/3 144/473/3 140/216/3
 f 140/217/3 144/473/3 142/216/3
 
+v -1 0 0 0 1 0
+v 1 0 0 0 1 0
+v 0 -1 0 0 1 0
+v 0 1 0 0 1 0
+l 1 2
+l 3 4
+‰PNG
+
+   IHDR         Km)Ü   sRGB ®Îé   gAMA  ±üa   	pHYs  Ã  ÃÇo¨d   2IDATWcø‹^ ”äBi¬J}€è­Œ
+AØ„$ €;  b”ƒSâÿ ‚ï–9z°    IEND®B`‚v 1.000000 1.000000 -1.000000
+v 1.000000 -1.000000 -1.000000
+v 1.000000 1.000000 1.000000
+v 1.000000 -1.000000 1.000000
+v -1.000000 1.000000 -1.000000
+v -1.000000 -1.000000 -1.000000
+v -1.000000 1.000000 1.000000
+v -1.000000 -1.000000 1.000000
+vt 0.875000 0.500000
+vt 0.625000 0.750000
+vt 0.625000 0.500000
+vt 0.375000 1.000000
+vt 0.375000 0.750000
+vt 0.625000 0.000000
+vt 0.375000 0.250000
+vt 0.375000 0.000000
+vt 0.375000 0.500000
+vt 0.125000 0.750000
+vt 0.125000 0.500000
+vt 0.625000 0.250000
+vt 0.875000 0.750000
+vt 0.625000 1.000000
+vn 0.0000 1.0000 0.0000
+vn 0.0000 0.0000 1.0000
+vn -1.0000 0.0000 0.0000
+vn 0.0000 -1.0000 0.0000
+vn 1.0000 0.0000 0.0000
+vn 0.0000 0.0000 -1.0000
+f 5/1/1 3/2/1 1/3/1
+f 3/2/2 8/4/2 4/5/2
+f 7/6/3 6/7/3 8/8/3
+f 2/9/4 8/10/4 6/11/4
+f 1/3/5 4/5/5 2/9/5
+f 5/12/6 2/9/6 6/7/6
+f 5/1/1 7/13/1 3/2/1
+f 3/2/2 7/14/2 8/4/2
+f 7/6/3 5/12/3 6/7/3
+f 2/9/4 4/5/4 8/10/4
+f 1/3/5 3/2/5 4/5/5
+f 5/12/6 1/3/6 2/9/6
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+precision mediump float; // required for es
+
+in vec3 vOutPos;
+in vec3 vOutNorm;
+in vec2 vOutTex;
+
+layout(location = 0) out vec4 color;
+
+uniform vec3 lightDiffuse;
+uniform vec3 lightPosition;
+uniform sampler2D textureDiffuse;
+
+void main()
+{
+    vec3 lightDir = normalize(lightPosition - vOutPos);
+    float diff = max(dot(normalize(vOutNorm), lightDir), 0.0);
+    
+    color = vec4(vec3(texture(textureDiffuse, vOutTex)) * lightDiffuse * (diff + 0.2), 1.0);
+}
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+precision mediump float; // required for es
+
+in vec3 vOutCol;
+
+layout(location = 0) out vec4 color;
+
+void main()
+{
+    color = vec4(vOutCol, 1.0);
+}
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+layout(location = 0) in vec3 inPosition;
+layout(location = 1) in vec3 inNormal;
+layout(location = 2) in vec2 inTexcoords;
+layout(location = 3) in vec3 inColor;
+layout(location = 4) in mat4 inInstModelMat;
+
+out vec3 vOutPos;
+out vec3 vOutNorm;
+out vec2 vOutTex;
+out vec3 vOutCol;
+
+uniform mat4 vpMat;
+
+void main()
+{
+    vOutPos = (inInstModelMat * vec4(inPosition, 1.0)).xyz;
+    // todo: is it reasonable to calc the normal matrix here?
+    vOutNorm = transpose(inverse(mat3(inInstModelMat))) * inNormal;
+    vOutTex = inTexcoords;
+    vOutCol = inColor;
+    gl_Position = vpMat * inInstModelMat * vec4(inPosition, 1.0);
+}
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+layout(location = 0) in vec3 inPosition;
+layout(location = 1) in vec3 inNormal;
+layout(location = 2) in vec2 inTexcoords;
+layout(location = 3) in vec3 inColor;
+
+out vec3 vOutPos;
+out vec3 vOutNorm;
+out vec2 vOutTex;
+out vec3 vOutCol;
+
+uniform mat4 mvpMat;
+uniform mat4 modelMat;
+uniform mat3 normalMat;
+
+void main()
+{
+    vOutPos = (modelMat * vec4(inPosition, 1.0)).xyz;
+    vOutNorm = normalMat * inNormal;
+    vOutTex = inTexcoords;
+    vOutCol = inColor;
+    gl_Position = mvpMat * vec4(inPosition, 1.0);
+}
 v -10 0 0 0.2 0 0
 v  10 0 0 1 0 0
 v 0 -10 0 0 0.2 0
@@ -1583,26 +1594,7 @@ l 79 80
 l 81 82
 l 83 84
 l 85 86
-OggS         QJ      ‰¥à0vorbis    D¬       q     ¸OggS          QJ     N*·f—ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ‘vorbis+   Xiph.Org libVorbis I 20120203 (Omnipresent)      ARTIST=KenneyG   COMMENTS=Sound generated by GameSynth from Tsugi (www.tsugi-studio.com)vorbis)BCV    1L Å€ĞU    `$)“fI)¥”¡(y˜”HI)¥”Å0‰˜”‰ÅcŒ1ÆcŒ1ÆcŒ 4d   €(	£æIjÎ9g'r 9iN8§ ŠQà9	Âõ&cn¦´¦knÎ)%Y   @H!…RH!…bˆ!†bˆ!‡rÈ!§œr
-*¨ ‚
-2È ƒL2é¤“N:é¨£:ê(´ĞB-´ÒJL1ÕVc®½]|sÎ9çœsÎ9çœsÎ	BCV    BdB!…Rˆ)¦˜r
-2È€ĞU    €    G‘I±Ë±ÍÑ$Oò,Q5Ñ3ESTMUUUUu]Wve×vu×v}Y˜…[¸}Y¸…[Ø…]÷…a†a†a†aø}ß÷}ß÷} 4d    #9–ã)¢"¢â9¢„†¬ d    	’")’£I¦fj®i›¶h«¶mË²,Ë²„†¬         iš¦iš¦iš¦iš¦iš¦iš¦išfY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY@hÈ* @ @ÇqÇq$ER$Çr,Y È   @R,År4Gs4Çs<Çs<GtDÉ”LÍôLY        @1ÅqÉÑ$OR-Ór5Ws=×sM×u]WUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUĞU    !f–j€3a 4d €   ¡CY    ˆ¡ä šĞšóÍ9šå ©›ÓÁ‰T›'¹©˜›sÎ9çœlÎãœsÎ)Ê™Å ™ĞšsÎIš¥ ™ĞšsÎy›­©ÒšsÎçœÆaœsÎiÒš©ÙX›sÎYĞšæ¨¹›sÎ‰”›'µ¹T›sÎ9çœsÎ9çœsÎ©^œÎÁ9áœsÎ‰Ú›k¹	]œsÎùdœîÍ	áœsÎ9çœsÎ9çœsÎ	BCV @  aØÆ‚ }b!¦!“t“ 1È)¤FJ©ƒPR'¥t‚ĞU     „RH!…RH!…RH!†bˆ!§œr
-*¨¤’Š*Ê(³Ì2Ë,³Ì2Ë¬ÃÎ:ë°ÃC1´ÒJ,5ÕVcµæs®9Hk¥µÖZ+¥”RJ)¥ 4d   @ dA…RH!†˜rÊ)§ ‚
-Y      ğ$ÏÑÑÑÑÏñQ%Q%Ñ2-S3=UTUWvmY—uÛ·…]Øuß×}ß×_†eY–eY–eY–eY–eY–e	BCV     B!„RH!…”bŒ1ÇœƒNB	ĞU    €    GqÇ‘É‘$K²$MÒ,Íò4Oó4ÑEQ4MS]ÑuÓeS6]Ó5eÓUeÕveÙ¶e[·}Y¶}ß÷}ß÷}ß÷}ß÷}ß×u 4d    #9’")’"9ãH’„†¬ d    (â8#I’$Y’&y–g‰š©™é©¢
-„†¬         hŠ§˜Š§ˆŠçˆ(‰–i‰šª¹¢lÊ®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº@hÈ* @ @Gr$Gr$ER$Er$Y È   À1CR$Ç²,Mó4Oó4Ñ=Ñ3=UtEY        ÀK±ÍÑ$QR-ÕR5ÕR-UT=UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUÕ4MÓ4Ğ•    ä¤¦Ôzb9‰AhIÄÅ\:éœ£\Œ‡#FIí!SÌµ˜ĞI…ÔâZjsT‹­dHA-¶ÆR!å¨BCV ¡ ÇMK       IÓ MÍ      ÀÑ4@=@E                                                                    M4Q4Q       MÑTÑ4      @EÀ3E@4U                                                                    M4Q4Q       MQ5O4      @E@4M@TM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           B¡!+€8 ‡ã@’ Iğ4€cYğ<xLàX<šÓ         @ò4x<¦	4Ïƒi          y<ÓHÏƒçÁ4         ğL¦	Ñ„j<Ó„iÂ4aª                      €  € € Ê@¡!+€8 ‡£H  8’dY   H’e €eY  ’ey                                                                €  € € Ê@¡!+€(  ‡¢XpËcY@’,`Y Mx@€  € € 4%(4d%  àpËÒ4Qä8–¥i¢Èq,KÓD‘eiš¦‰"4KÓDçy¦	Ïó<Ó„(Š¢iQ4M    6hJ,PhÈJ  $ Àá8–åy¢(Š¦išªÊq,ËóDQMSU]—ãX–ç‰¢(š¦ªº.ËÒ4ÏEQ4MUu]hšç‰¢(š¦ªº.4MMÓ4UUU]šæ‰¦išªªª®ÏEÓ4MUu]×¢hš¦©ª®ëº@MÓ4UÕu]ˆ¢hš¦ªº®ëÓ4MUU]×•e€iªªªº®,TUU]×•e ªªêº®+Ë ×u]Ù•eYàº®+Ë²,  àÀ  À:É¨²M¸ğ ²" ˆ  ŒaJ1¥cB
-¡aLBH!dRR*)¥
-B*%•RAH¥¤R2J-¥–R!•’J© ¤RR) €8 €X…†¬ ò  c”bÌ9ç$BJ1æœs!¥sÎ9©cÎ9çœ”’1çœsNJÉ˜sÎ9'¥dÌ9çœ“R:çœsJ)¥tÎ9ç¤”RBèœsRJ)sÎ9 @  6ŠlN0ThÈJ   Àà8–¥i'Š¦iI’¦y'š¦ij’¤i'Š¦iš<ÏóDQMSUyç‰¢(š¦ªr]QMÓ4MU%Ë¢(Š¦©ªª
-Ó4MÓTUU…iš¦iªªëÂ¶UUU]×uaÛªªª®ëºÀu]×ue¸®ëº®,  Op  *°au„“¢±ÀBCV   „1)„R!¤BH)…  € € Ê@¡!+€p  €Œ1ÆcŒ16ŒaŒ1ÆcŒ1q
-cŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆØZk­µV Î…@Y„3¬$² 	  ŒAˆ1è$”’JJBŒ9(%•–ZŠ­Bˆ1¥¤ÔZl1Ï9¡¤”ZŠ)¶â9ç¤¤ÔZŒ1ÆZ\!¥”Z‹-¶›l!¤”Rk1ÆZc3Jµ”Z‹1Æk,J¹”Rk±ÅkE(›[k1ÆZk­5)åsK±ÕZc¬µ&£Œ’1ÆZk¬µÖ"”R2ÆS¬µÖš„0Æ÷c¬1çZ“ÂøS-±ÕZkRJ)#d©ÆZsNJ	eŒ-Õ”sÎ @=8 @%A'Ua£	€BCV ¹ BJ1Æ˜sÎ9çœsR¤sÌ9ç „B!¤1Æ˜sÎA!„BHcÌ9ç „B¡„’RÊ˜sÎA!„RJ)%¥Ô9ç „B(¥”RJJ©sÎA!„RJ)¥””R!„B¥”RJ))¥”B!„J)¥”RRJ)…B¥”RJ)¥¤”R
-!„J)¥”RJI)¥B	¥”RJ)¥”’RJ)¥J)¥”RJ)%¥”RJ¥”RJ)¥”RJJ)¥”J)¥”RJ)¥””RJ)•RJ)¥”RJ))¥”RJ©”RJ)¥”RRJ)¥”R)¥”RJ)¥¤”RJ)¥RJ)¥”RJI)¥”RJ¥”RJ)¥”’RJ)¥”R*¥”RJ)¥    € #*-ÄN3®<G2L@…†¬ È  ±´ÖZ«ŒrÊII­CFæ ¤ØI!µXKe AÊIJ‚)©…Œ*¥˜“–BË˜Rb+1tŒ1G9åTBÇ   ‚  2@ 8@H 
-ÃE@@.!£À pL8'6  AˆÌ‰ˆÅ 1¡(*¦€Å†| ÈĞØH»¸€.\ĞÅ]BB‚X@	88á†'Şğ„œ STê@      à  Ù ""¢™ãèğø 	!)19A     ; ø  HR€ˆˆhæ8:<>@BDFHJLNP      @         OggS 5)      QJ     eÃ LYÿ2ÿì×ŞÎâ£ÒÿÿÌ†©† QÌ†©† QÜš¨VKŒcRÄQ‹(b­Ö‚h4Öª"hµ*‚j‚İîjPUÑ UZ4ßm§U_´oO3ú|«·ô”v5§$İŠ»\_±WÚÕœ’t+îr}ÅŞYÉ¨[â¤4ˆ«j­(ŠbDTMQÓfk*`aƒUCÃÂ–¢€¥N1ˆ¢C§l  *6Šr¬C«5 Zô Úø•û=×»çsˆ–üùAš&rãWì÷\ïÏ!ZşñçišÈèõz½^¯Š•:uêF”±M‡TbbÄÌÌbÌÄÌÌ$ ¶¶SÓ°Zl-jƒ5F¬V±ÆˆUKKKK+V­XµbİŠV±XÀFE Q4QUTAU´Š*  ißÚ}ÅËÕ"FŒ¢U–Û+çœãLëéSK­»Vãö
-D$¥İÂïûÔ’î®u—ş:É··WvÇš=ìª¡3İş¶~“\£üäò:É···Ù `¥ÍlŞ™uEÈ/HO6|­ßîÖıçÏŸ½ï¯V"{®Ó}²!ûÁx<i
-8äõ
-r¾-©µÉ“ü‚>ìRô`3çœ‘¸õ]äĞoóİ^6jG€Ï” ¨İ0øùìôı\»“"?«-Q»ağóÙéû¹v'E"~V1ÚÑ  `wppp#vp`bcffff 1m PÅ†ˆ™‘`ED9DˆŠHŠs—Š  ‚¥¥Š…5kÖ¬jib¨i †y×I†µ¸¹‘ÖGÍõjw·¥WS¬¥åïh].©]W_ËçZzñI^e¦~µ[lÍZ½Ú_¶N-µ£‰kè*Y×»*ùº½-³W»šËZsŸîv² å.x’¹ÕYkıºzWEâ*¹“(WÅ5²o2s]>wBÎ9ç­7æ~^àÄe¿Îı,¬7Û³û¼ÎıZ¿«ï{äoCóéz«Âz+nó«ûÊC¡®óëùÓÏŸeë‡éQù|~¬·nÍeöW ş_‡K+.Yç–ùXäUˆÿ×áÒŠKÖ¹e>? €ÚŒ( §;88;r v v`f&&™ €@Öš#ªF¬
-€*ÒX QG‚+Vl°É6ÖmÆ&Óª5«F¾-×í^ß¼c].s.uKX\,Rõ‘Z,&åëâ*osyé}õ¯Cg.®%×È»SUQUQUQ5ª’Û×åkl•*ë¬óä3Çmy{{İŞæ¼¯#»šlr]ÍB¾-sÎ×í•c_K¯‹m—éÔ`¨ŠbŠU¿Iô:ÎòÀ;  À8Ù½@ ¡  ¾¥ğÿÎÊÿ§ ¸7£şÿÀù@ùÿ ÷W €ÍÁÁAÌÁÁ™YŒ™™™   @”¨ €'EÅyàJ
-ñ ÄÂšÖÄF›­X³¥5K1ÅRÃL«ZÑNÑ¡S­:T~i¹UtyEŸú‹[M”:K]"S.Ö]åîîºZww'¡ë—sË/[%®Û|{›o³ï:¼
-«*Ê¼Z¿»»Z%_Y²àM¢—èít`Á %Pl4$ÄQS¥†·K‚ü4g¹ ’l°Å{aïPD>-Ü¿BLı@»qõNF÷¯S?Ğn\½ß  úÓ†-•±±ƒ‹13333“    µH VÁ¢bo¶ØªØ +)–Ã§€5±®6˜–Ö¬[3­XŠiˆŠ¨¢ QÑ*‚Š¢EQTEÕh5Vòë$S.\;!gÍ\X;?¬ŞIö'yTj¼®¦ƒµÓÁQ$äÓ]ºÀAÙMá­Öş·8­¼Sûgßè5WH	G÷· (?+¸ì¥ô	ˆGzúw2öó­•ôv¾”²ß'œÿUŒ‘GÊ¯Ò òGÀ@ ^ëüÇÅ%òEtŞ,kÿ¸¸D¾ˆÎÛåezÓÁÁÁÁAŒ˜™™‰‰™    ±ØZÅÎV­¶jƒÅ–j£Z±°Ñ´f£M¦5«ÖÄX§E§F´‚ªC§FUtjTU1ˆªğİuõ®Ö Ö*µ«U[jl£vĞ5±î½şâÌ4Ê§U«{ Ô¦0¶ì åcş_«á½ÙlËdÒkÏ,± ¤—í:ÒÆEÒvĞvéG¿ŞúÉĞõ²oõ$ë€wŠ©FÑBj…ô`	¾ÚüÎ|!{å¸![®6ÿŸ3_È^ùnÈ–—±1›ƒƒƒ#â1111ffbf  €šbc¯öµ³µµ·6Û€6¨ia£-l4,¬bÕë"¦€…6˜VlVÁŠEET%² ‘ü:$ÜÊYIW~*#‹É—ê^{n‘àF Y´(FUÄ¥ÏF2¼…€‚V0Dk–q¥´¯¡läw;ˆµ4×Ìû¼‚`Îw}”Â5Õ¯ïäx,İG=¨ğğz9Gsç6´ªàÏ=î½0è÷tVö·Sƒ?QI ş	ıešN€‡Oèÿsô(Ótl8|  v vsp`ff&`f   ¨ €#Âr¤‰KˆñAX˜Öl´‚¥…©¢ Â>åê9©0Ÿ å¿K"ÂÂ_yòWu¤–KÆÈó9¾JeàÒÑE"”$Ìi“ÌÊğ‰eö¼2–ªõñçï‚À°¹QôlGHüœ]’€“]M(ä-!€T ¾ÉüŞ#ù®à€ó&óÿ9zä»>€ÎOY“™E"ˆGÄÄÌLLLLÌbÌ   ÁˆXQ±VDè«ªjlUE¢†yqª-¨¢‚(çö6‚ª•²T‘Ó¦ZKË/ËñË!9ğ;¾wqà„“ÎÙë«Ü¶÷ì&o‘•¥ˆ5S$˜~æï¥¿µÏéÛ/e;E§Ûú5éH@Û]F_%Õ }ON€áã¿÷ñGjBèe20É·m—,$xGybıØEÀÊ@`‚ŞYü{Ì¤ÉÇ„ÎÅ¿ÇLš|L(à|m„Å–Š™™YÌÁÁÁAŒ™™™	  €a#j5m‹ÕÎ,6˜–6Y`˜6Ûh£uëVUÄÂŠ5kÖ¬¢¦¥U«Z­jD£Ñh4Š`UÕjUÕˆ¢(Š"B»ïÎ›ôÿßîJ»=+eøßv¹Òî_]Éñ¿íŠ•~ÿvWrüëY‘á÷ïr¥İ¿•2üÚ.WÚıÛ])±Ög†ß¿‹Sö7RJÂßzÒ™Òú¾©`o"´ûfRJ´¿™”k=‘Î´Öœş·•î_]Iş·]®ôû·»Bşõ¬Ôî×vÙNşÕ•õ,-úıKùïYÑg‘ü‡£Zøy~(¼#/ ó¡ğ:P¼€Î×öØ^˜©˜™™ÅˆÅ˜™™™™I  Óbg5¬vv¶6ööSÔ°jƒ-maK›l´b)˜:uèÔ¨"ªF§:´‚ªÑ©C§F+XÑj´U°¢ÕhU°¢*j'×í­÷İUòmöj­ä+ûëózëûsg«ósææÖ÷çÙªŸİ­¹_Ÿ×[÷Ÿİ­Î¯ÌÍ­ïÏ­ÎÏîæÖ÷çõV¯ÖJ¾r¿>¯·ŞçN.3õ«¹ÌÔZ;[õ³»™ûõy½uÿÙİêüÊÜÜúşÜÙêüìnn}­úÙİšûõy½õ>ËVçWæ:÷ıy¶êgw3÷ıy¶êgÙšûÎœ­|fSß2N\
- This project uses open source software, the licenses are given below.
+This project uses open source software, the licenses are given below.
 Platform: web
 
 Assets: some assets by kenney.nl
@@ -1800,52 +1792,61 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
-‰PNG
-
-   IHDR         Km)Ü   sRGB ®Îé   gAMA  ±üa   	pHYs  Ã  ÃÇo¨d   2IDATWcø‹^ ”äBi¬J}€è­Œ
-AØ„$ €;  b”ƒSâÿ ‚ï–9z°    IEND®B`‚v -1 0 0 0 1 0
-v 1 0 0 0 1 0
-v 0 -1 0 0 1 0
-v 0 1 0 0 1 0
-l 1 2
-l 3 4
-v 1.000000 1.000000 -1.000000
-v 1.000000 -1.000000 -1.000000
-v 1.000000 1.000000 1.000000
-v 1.000000 -1.000000 1.000000
-v -1.000000 1.000000 -1.000000
-v -1.000000 -1.000000 -1.000000
-v -1.000000 1.000000 1.000000
-v -1.000000 -1.000000 1.000000
-vt 0.875000 0.500000
-vt 0.625000 0.750000
-vt 0.625000 0.500000
-vt 0.375000 1.000000
-vt 0.375000 0.750000
-vt 0.625000 0.000000
-vt 0.375000 0.250000
-vt 0.375000 0.000000
-vt 0.375000 0.500000
-vt 0.125000 0.750000
-vt 0.125000 0.500000
-vt 0.625000 0.250000
-vt 0.875000 0.750000
-vt 0.625000 1.000000
-vn 0.0000 1.0000 0.0000
-vn 0.0000 0.0000 1.0000
-vn -1.0000 0.0000 0.0000
-vn 0.0000 -1.0000 0.0000
-vn 1.0000 0.0000 0.0000
-vn 0.0000 0.0000 -1.0000
-f 5/1/1 3/2/1 1/3/1
-f 3/2/2 8/4/2 4/5/2
-f 7/6/3 6/7/3 8/8/3
-f 2/9/4 8/10/4 6/11/4
-f 1/3/5 4/5/5 2/9/5
-f 5/12/6 2/9/6 6/7/6
-f 5/1/1 7/13/1 3/2/1
-f 3/2/2 7/14/2 8/4/2
-f 7/6/3 5/12/3 6/7/3
-f 2/9/4 4/5/4 8/10/4
-f 1/3/5 3/2/5 4/5/5
-f 5/12/6 1/3/6 2/9/6
+// meant to be compatible with glsl 330 and 300 es
+// desired #version has to be prepended befor compiling
+
+precision mediump float; // required for es
+
+in vec3 vOutPos;
+in vec3 vOutNorm;
+in vec3 vOutCol;
+
+layout(location = 0) out vec4 color;
+
+uniform vec3 lightPosition;
+uniform vec3 lightDiffuse;
+
+void main()
+{
+    vec3 lightDir = normalize(lightPosition - vOutPos);
+    float diff = max(dot(normalize(vOutNorm), lightDir), 0.0);
+
+    color = vec4(vOutCol * lightDiffuse * (diff + 0.2), 1.0);
+}
+# Created by Kenney (www.kenney.nl)
+
+newmtl metal
+Kd 0.7960784 0.8156863 0.8784314
+
+newmtl dark
+Kd 0.1568628 0.1960784 0.2392157
+
+newmtl darkMetal
+Kd 0.5921569 0.6352941 0.7686275
+
+newmtl purple
+Kd 0.6117647 0.4392157 0.9607843
+
+newmtl _defaultMat
+Kd 1 1 1
+
+OggS         QJ      ‰¥à0vorbis    D¬       q     ¸OggS          QJ     N*·f—ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿ‘vorbis+   Xiph.Org libVorbis I 20120203 (Omnipresent)      ARTIST=KenneyG   COMMENTS=Sound generated by GameSynth from Tsugi (www.tsugi-studio.com)vorbis)BCV    1L Å€ĞU    `$)“fI)¥”¡(y˜”HI)¥”Å0‰˜”‰ÅcŒ1ÆcŒ1ÆcŒ 4d   €(	£æIjÎ9g'r 9iN8§ ŠQà9	Âõ&cn¦´¦knÎ)%Y   @H!…RH!…bˆ!†bˆ!‡rÈ!§œr
+*¨ ‚
+2È ƒL2é¤“N:é¨£:ê(´ĞB-´ÒJL1ÕVc®½]|sÎ9çœsÎ9çœsÎ	BCV    BdB!…Rˆ)¦˜r
+2È€ĞU    €    G‘I±Ë±ÍÑ$Oò,Q5Ñ3ESTMUUUUu]Wve×vu×v}Y˜…[¸}Y¸…[Ø…]÷…a†a†a†aø}ß÷}ß÷} 4d    #9–ã)¢"¢â9¢„†¬ d    	’")’£I¦fj®i›¶h«¶mË²,Ë²„†¬         iš¦iš¦iš¦iš¦iš¦iš¦išfY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY–eY@hÈ* @ @ÇqÇq$ER$Çr,Y È   @R,År4Gs4Çs<Çs<GtDÉ”LÍôLY        @1ÅqÉÑ$OR-Ór5Ws=×sM×u]WUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUĞU    !f–j€3a 4d €   ¡CY    ˆ¡ä šĞšóÍ9šå ©›ÓÁ‰T›'¹©˜›sÎ9çœlÎãœsÎ)Ê™Å ™ĞšsÎIš¥ ™ĞšsÎy›­©ÒšsÎçœÆaœsÎiÒš©ÙX›sÎYĞšæ¨¹›sÎ‰”›'µ¹T›sÎ9çœsÎ9çœsÎ©^œÎÁ9áœsÎ‰Ú›k¹	]œsÎùdœîÍ	áœsÎ9çœsÎ9çœsÎ	BCV @  aØÆ‚ }b!¦!“t“ 1È)¤FJ©ƒPR'¥t‚ĞU     „RH!…RH!…RH!†bˆ!§œr
+*¨¤’Š*Ê(³Ì2Ë,³Ì2Ë¬ÃÎ:ë°ÃC1´ÒJ,5ÕVcµæs®9Hk¥µÖZ+¥”RJ)¥ 4d   @ dA…RH!†˜rÊ)§ ‚
+Y      ğ$ÏÑÑÑÑÏñQ%Q%Ñ2-S3=UTUWvmY—uÛ·…]Øuß×}ß×_†eY–eY–eY–eY–eY–e	BCV     B!„RH!…”bŒ1ÇœƒNB	ĞU    €    GqÇ‘É‘$K²$MÒ,Íò4Oó4ÑEQ4MS]ÑuÓeS6]Ó5eÓUeÕveÙ¶e[·}Y¶}ß÷}ß÷}ß÷}ß÷}ß×u 4d    #9’")’"9ãH’„†¬ d    (â8#I’$Y’&y–g‰š©™é©¢
+„†¬         hŠ§˜Š§ˆŠçˆ(‰–i‰šª¹¢lÊ®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº®ëº@hÈ* @ @Gr$Gr$ER$Er$Y È   À1CR$Ç²,Mó4Oó4Ñ=Ñ3=UtEY        ÀK±ÍÑ$QR-ÕR5ÕR-UT=UUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUÕ4MÓ4Ğ•    ä¤¦Ôzb9‰AhIÄÅ\:éœ£\Œ‡#FIí!SÌµ˜ĞI…ÔâZjsT‹­dHA-¶ÆR!å¨BCV ¡ ÇMK       IÓ MÍ      ÀÑ4@=@E                                                                    M4Q4Q       MÑTÑ4      @EÀ3E@4U                                                                    M4Q4Q       MQ5O4      @E@4M@TM                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           B¡!+€8 ‡ã@’ Iğ4€cYğ<xLàX<šÓ         @ò4x<¦	4Ïƒi          y<ÓHÏƒçÁ4         ğL¦	Ñ„j<Ó„iÂ4aª                      €  € € Ê@¡!+€8 ‡£H  8’dY   H’e €eY  ’ey                                                                €  € € Ê@¡!+€(  ‡¢XpËcY@’,`Y Mx@€  € € 4%(4d%  àpËÒ4Qä8–¥i¢Èq,KÓD‘eiš¦‰"4KÓDçy¦	Ïó<Ó„(Š¢iQ4M    6hJ,PhÈJ  $ Àá8–åy¢(Š¦išªÊq,ËóDQMSU]—ãX–ç‰¢(š¦ªº.ËÒ4ÏEQ4MUu]hšç‰¢(š¦ªº.4MMÓ4UUU]šæ‰¦išªªª®ÏEÓ4MUu]×¢hš¦©ª®ëº@MÓ4UÕu]ˆ¢hš¦ªº®ëÓ4MUU]×•e€iªªªº®,TUU]×•e ªªêº®+Ë ×u]Ù•eYàº®+Ë²,  àÀ  À:É¨²M¸ğ ²" ˆ  ŒaJ1¥cB
+¡aLBH!dRR*)¥
+B*%•RAH¥¤R2J-¥–R!•’J© ¤RR) €8 €X…†¬ ò  c”bÌ9ç$BJ1æœs!¥sÎ9©cÎ9çœ”’1çœsNJÉ˜sÎ9'¥dÌ9çœ“R:çœsJ)¥tÎ9ç¤”RBèœsRJ)sÎ9 @  6ŠlN0ThÈJ   Àà8–¥i'Š¦iI’¦y'š¦ij’¤i'Š¦iš<ÏóDQMSUyç‰¢(š¦ªr]QMÓ4MU%Ë¢(Š¦©ªª
+Ó4MÓTUU…iš¦iªªëÂ¶UUU]×uaÛªªª®ëºÀu]×ue¸®ëº®,  Op  *°au„“¢±ÀBCV   „1)„R!¤BH)…  € € Ê@¡!+€p  €Œ1ÆcŒ16ŒaŒ1ÆcŒ1q
+cŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆcŒ1ÆØZk­µV Î…@Y„3¬$² 	  ŒAˆ1è$”’JJBŒ9(%•–ZŠ­Bˆ1¥¤ÔZl1Ï9¡¤”ZŠ)¶â9ç¤¤ÔZŒ1ÆZ\!¥”Z‹-¶›l!¤”Rk1ÆZc3Jµ”Z‹1Æk,J¹”Rk±ÅkE(›[k1ÆZk­5)åsK±ÕZc¬µ&£Œ’1ÆZk¬µÖ"”R2ÆS¬µÖš„0Æ÷c¬1çZ“ÂøS-±ÕZkRJ)#d©ÆZsNJ	eŒ-Õ”sÎ @=8 @%A'Ua£	€BCV ¹ BJ1Æ˜sÎ9çœsR¤sÌ9ç „B!¤1Æ˜sÎA!„BHcÌ9ç „B¡„’RÊ˜sÎA!„RJ)%¥Ô9ç „B(¥”RJJ©sÎA!„RJ)¥””R!„B¥”RJ))¥”B!„J)¥”RRJ)…B¥”RJ)¥¤”R
+!„J)¥”RJI)¥B	¥”RJ)¥”’RJ)¥J)¥”RJ)%¥”RJ¥”RJ)¥”RJJ)¥”J)¥”RJ)¥””RJ)•RJ)¥”RJ))¥”RJ©”RJ)¥”RRJ)¥”R)¥”RJ)¥¤”RJ)¥RJ)¥”RJI)¥”RJ¥”RJ)¥”’RJ)¥”R*¥”RJ)¥    € #*-ÄN3®<G2L@…†¬ È  ±´ÖZ«ŒrÊII­CFæ ¤ØI!µXKe AÊIJ‚)©…Œ*¥˜“–BË˜Rb+1tŒ1G9åTBÇ   ‚  2@ 8@H 
+ÃE@@.!£À pL8'6  AˆÌ‰ˆÅ 1¡(*¦€Å†| ÈĞØH»¸€.\ĞÅ]BB‚X@	88á†'Şğ„œ STê@      à  Ù ""¢™ãèğø 	!)19A     ; ø  HR€ˆˆhæ8:<>@BDFHJLNP      @         OggS 5)      QJ     eÃ LYÿ2ÿì×ŞÎâ£ÒÿÿÌ†©† QÌ†©† QÜš¨VKŒcRÄQ‹(b­Ö‚h4Öª"hµ*‚j‚İîjPUÑ UZ4ßm§U_´oO3ú|«·ô”v5§$İŠ»\_±WÚÕœ’t+îr}ÅŞYÉ¨[â¤4ˆ«j­(ŠbDTMQÓfk*`aƒUCÃÂ–¢€¥N1ˆ¢C§l  *6Šr¬C«5 Zô Úø•û=×»çsˆ–üùAš&rãWì÷\ïÏ!ZşñçišÈèõz½^¯Š•:uêF”±M‡TbbÄÌÌbÌÄÌÌ$ ¶¶SÓ°Zl-jƒ5F¬V±ÆˆUKKKK+V­XµbİŠV±XÀFE Q4QUTAU´Š*  ißÚ}ÅËÕ"FŒ¢U–Û+çœãLëéSK­»Vãö
+D$¥İÂïûÔ’î®u—ş:É··WvÇš=ìª¡3İş¶~“\£üäò:É···Ù `¥ÍlŞ™uEÈ/HO6|­ßîÖıçÏŸ½ï¯V"{®Ó}²!ûÁx<i
+8äõ
+r¾-©µÉ“ü‚>ìRô`3çœ‘¸õ]äĞoóİ^6jG€Ï” ¨İ0øùìôı\»“"?«-Q»ağóÙéû¹v'E"~V1ÚÑ  `wppp#vp`bcffff 1m PÅ†ˆ™‘`ED9DˆŠHŠs—Š  ‚¥¥Š…5kÖ¬jib¨i †y×I†µ¸¹‘ÖGÍõjw·¥WS¬¥åïh].©]W_ËçZzñI^e¦~µ[lÍZ½Ú_¶N-µ£‰kè*Y×»*ùº½-³W»šËZsŸîv² å.x’¹ÕYkıºzWEâ*¹“(WÅ5²o2s]>wBÎ9ç­7æ~^àÄe¿Îı,¬7Û³û¼ÎıZ¿«ï{äoCóéz«Âz+nó«ûÊC¡®óëùÓÏŸeë‡éQù|~¬·nÍeöW ş_‡K+.Yç–ùXäUˆÿ×áÒŠKÖ¹e>? €ÚŒ( §;88;r v v`f&&™ €@Öš#ªF¬
+€*ÒX QG‚+Vl°É6ÖmÆ&Óª5«F¾-×í^ß¼c].s.uKX\,Rõ‘Z,&åëâ*osyé}õ¯Cg.®%×È»SUQUQUQ5ª’Û×åkl•*ë¬óä3Çmy{{İŞæ¼¯#»šlr]ÍB¾-sÎ×í•c_K¯‹m—éÔ`¨ŠbŠU¿Iô:ÎòÀ;  À8Ù½@ ¡  ¾¥ğÿÎÊÿ§ ¸7£şÿÀù@ùÿ ÷W €ÍÁÁAÌÁÁ™YŒ™™™   @”¨ €'EÅyàJ
+ñ ÄÂšÖÄF›­X³¥5K1ÅRÃL«ZÑNÑ¡S­:T~i¹UtyEŸú‹[M”:K]"S.Ö]åîîºZww'¡ë—sË/[%®Û|{›o³ï:¼
+«*Ê¼Z¿»»Z%_Y²àM¢—èít`Á %Pl4$ÄQS¥†·K‚ü4g¹ ’l°Å{aïPD>-Ü¿BLı@»qõNF÷¯S?Ğn\½ß  úÓ†-•±±ƒ‹13333“    µH VÁ¢bo¶ØªØ +)–Ã§€5±®6˜–Ö¬[3­XŠiˆŠ¨¢ QÑ*‚Š¢EQTEÕh5Vòë$S.\;!gÍ\X;?¬ŞIö'yTj¼®¦ƒµÓÁQ$äÓ]ºÀAÙMá­Öş·8­¼Sûgßè5WH	G÷· (?+¸ì¥ô	ˆGzúw2öó­•ôv¾”²ß'œÿUŒ‘GÊ¯Ò òGÀ@ ^ëüÇÅ%òEtŞ,kÿ¸¸D¾ˆÎÛåezÓÁÁÁÁAŒ˜™™‰‰™    ±ØZÅÎV­¶jƒÅ–j£Z±°Ñ´f£M¦5«ÖÄX§E§F´‚ªC§FUtjTU1ˆªğİuõ®Ö Ö*µ«U[jl£vĞ5±î½şâÌ4Ê§U«{ Ô¦0¶ì åcş_«á½ÙlËdÒkÏ,± ¤—í:ÒÆEÒvĞvéG¿ŞúÉĞõ²oõ$ë€wŠ©FÑBj…ô`	¾ÚüÎ|!{å¸![®6ÿŸ3_È^ùnÈ–—±1›ƒƒƒ#â1111ffbf  €šbc¯öµ³µµ·6Û€6¨ia£-l4,¬bÕë"¦€…6˜VlVÁŠEET%² ‘ü:$ÜÊYIW~*#‹É—ê^{n‘àF Y´(FUÄ¥ÏF2¼…€‚V0Dk–q¥´¯¡läw;ˆµ4×Ìû¼‚`Îw}”Â5Õ¯ïäx,İG=¨ğğz9Gsç6´ªàÏ=î½0è÷tVö·Sƒ?QI ş	ıešN€‡Oèÿsô(Ótl8|  v vsp`ff&`f   ¨ €#Âr¤‰KˆñAX˜Öl´‚¥…©¢ Â>åê9©0Ÿ å¿K"ÂÂ_yòWu¤–KÆÈó9¾JeàÒÑE"”$Ìi“ÌÊğ‰eö¼2–ªõñçï‚À°¹QôlGHüœ]’€“]M(ä-!€T ¾ÉüŞ#ù®à€ó&óÿ9zä»>€ÎOY“™E"ˆGÄÄÌLLLLÌbÌ   ÁˆXQ±VDè«ªjlUE¢†yqª-¨¢‚(çö6‚ª•²T‘Ó¦ZKË/ËñË!9ğ;¾wqà„“ÎÙë«Ü¶÷ì&o‘•¥ˆ5S$˜~æï¥¿µÏéÛ/e;E§Ûú5éH@Û]F_%Õ }ON€áã¿÷ñGjBèe20É·m—,$xGybıØEÀÊ@`‚ŞYü{Ì¤ÉÇ„ÎÅ¿ÇLš|L(à|m„Å–Š™™YÌÁÁÁAŒ™™™	  €a#j5m‹ÕÎ,6˜–6Y`˜6Ûh£uëVUÄÂŠ5kÖ¬¢¦¥U«Z­jD£Ñh4Š`UÕjUÕˆ¢(Š"B»ïÎ›ôÿßîJ»=+eøßv¹Òî_]Éñ¿íŠ•~ÿvWrüëY‘á÷ïr¥İ¿•2üÚ.WÚıÛ])±Ög†ß¿‹Sö7RJÂßzÒ™Òú¾©`o"´ûfRJ´¿™”k=‘Î´Öœş·•î_]Iş·]®ôû·»Bşõ¬Ôî×vÙNşÕ•õ,-úıKùïYÑg‘ü‡£Zøy~(¼#/ ó¡ğ:P¼€Î×öØ^˜©˜™™ÅˆÅ˜™™™™I  Óbg5¬vv¶6ööSÔ°jƒ-maK›l´b)˜:uèÔ¨"ªF§:´‚ªÑ©C§F+XÑj´U°¢ÕhU°¢*j'×í­÷İUòmöj­ä+ûëózëûsg«ósææÖ÷çÙªŸİ­¹_Ÿ×[÷Ÿİ­Î¯ÌÍ­ïÏ­ÎÏîæÖ÷çõV¯ÖJ¾r¿>¯·ŞçN.3õ«¹ÌÔZ;[õ³»™ûõy½uÿÙİêüÊÜÜúşÜÙêüìnn}­úÙİšûõy½õ>ËVçWæ:÷ıy¶êgw3÷ıy¶êgÙšûÎœ­|fSß2N\
+ 
