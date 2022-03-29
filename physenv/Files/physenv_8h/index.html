@@ -727,7 +727,7 @@
 <span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">RigidBody</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">RigidBody</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">);</span><span class="w"></span>
+<span class="w">            </span><span class="n">RigidBody</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">m_body</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
 <span class="w">            </span><span class="o">~</span><span class="n">RigidBody</span><span class="p">();</span><span class="w"></span>
 <span class="w">            </span><span class="n">yourgame</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">Trafo</span><span class="w"> </span><span class="nf">getTrafo</span><span class="p">();</span><span class="w"></span>
 
@@ -747,6 +747,11 @@
 <span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">m_body0</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">m_body1</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">m_impact</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">involves</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nameA</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nameB</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<span class="w">            </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">m_body0</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameA</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">m_body1</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameB</span><span class="p">))</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
+<span class="w">                       </span><span class="p">((</span><span class="n">m_body0</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameB</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">m_body1</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameA</span><span class="p">));</span><span class="w"></span>
+<span class="w">            </span><span class="p">}</span><span class="w"></span>
 <span class="w">        </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">PhysEnv</span><span class="w"></span>
@@ -790,7 +795,7 @@
 <span class="cp">#endif</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-03-28 at 23:30:25 +0000</p>
+<p>Updated on 2022-03-29 at 20:07:19 +0000</p>
 
               
             </article>
