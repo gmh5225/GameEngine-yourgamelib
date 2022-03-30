@@ -721,6 +721,7 @@
 
 
 <h1 id="yourgameutilrigidbody">yourgame::util::RigidBody</h1>
+<p>Represents a rigid body, holding a void pointer to an underlying implementation. </p>
 <p><code>#include &lt;physenv.h&gt;</code></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
@@ -733,7 +734,7 @@
 <tbody>
 <tr>
 <td></td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-rigidbody">RigidBody</a></strong>(std::string name, void * body)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-rigidbody">RigidBody</a></strong>(std::string name, void * body)<br>Constructor.</td>
 </tr>
 <tr>
 <td></td>
@@ -741,15 +742,15 @@
 </tr>
 <tr>
 <td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1math_1_1Trafo/">yourgame::math::Trafo</a></td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-gettrafo">getTrafo</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-gettrafo">getTrafo</a></strong>()<br>Get transform (Trafo) calculated from rigid body.</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setrestitution">setRestitution</a></strong>(float restitution)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setrestitution">setRestitution</a></strong>(float restitution)<br>Set the restitution of the rigid body.</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setfriction">setFriction</a></strong>(float friction)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setfriction">setFriction</a></strong>(float friction)<br>Set the friction of the rigid body.</td>
 </tr>
 </tbody>
 </table>
@@ -763,11 +764,11 @@
 </thead>
 <tbody>
 <tr>
-<td>std::string</td>
+<td>const std::string</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#variable-m-name">m_name</a></strong></td>
 </tr>
 <tr>
-<td>void *</td>
+<td>void *const</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#variable-m-body">m_body</a></strong></td>
 </tr>
 </tbody>
@@ -779,31 +780,49 @@
 <span class="w">    </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">body</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Constructor. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of the rigid body </li>
+<li><strong>body</strong> pointer to the underlying implementation </li>
+</ul>
 <h3 id="function-rigidbody_1">function ~RigidBody</h3>
 <div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">RigidBody</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
 <h3 id="function-gettrafo">function getTrafo</h3>
 <div class="highlight"><pre><span></span><code><span class="n">yourgame</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">Trafo</span><span class="w"> </span><span class="n">getTrafo</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Get transform (Trafo) calculated from rigid body. </p>
+<p><strong>Return</strong>: Trafo object </p>
 <h3 id="function-setrestitution">function setRestitution</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setRestitution</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">restitution</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Set the restitution of the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>restitution</strong> restitution </li>
+</ul>
 <h3 id="function-setfriction">function setFriction</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setFriction</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">friction</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Set the friction of the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>friction</strong> friction </li>
+</ul>
 <h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
 <h3 id="variable-m_name">variable m_name</h3>
-<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <h3 id="variable-m_body">variable m_body</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-03-29 at 20:07:19 +0000</p>
+<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
 
               
             </article>

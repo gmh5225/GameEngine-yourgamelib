@@ -750,6 +750,7 @@
 
 
 <h1 id="yourgameutilphysenv">yourgame::util::PhysEnv</h1>
+<p>Represents a Physical Environment. </p>
 <p><code>#include &lt;physenv.h&gt;</code></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
@@ -770,51 +771,51 @@
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-setgravity">setGravity</a></strong>(float x, float y, float z)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-setgravity">setGravity</a></strong>(float x, float y, float z)<br>Set the Gravity of the physical world.</td>
 </tr>
 <tr>
 <td>bool</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-newboxshape">newBoxShape</a></strong>(const std::string &amp; name, float halfX, float halfY, float halfZ)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-newboxshape">newBoxShape</a></strong>(const std::string &amp; name, float halfX, float halfY, float halfZ)<br>Creates and stores a new box shape to be referenced during rigid body creation.</td>
 </tr>
 <tr>
 <td>bool</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-deleteshape">deleteShape</a></strong>(const std::string &amp; name)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-deleteshape">deleteShape</a></strong>(const std::string &amp; name)<br>Deletes a shape by name.</td>
 </tr>
 <tr>
 <td>size_t</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-clearshapes">clearShapes</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-clearshapes">clearShapes</a></strong>()<br>Deletes all shapes.</td>
 </tr>
 <tr>
 <td>size_t</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-numshapes">numShapes</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-numshapes">numShapes</a></strong>()<br>Returns the number of present shapes.</td>
 </tr>
 <tr>
 <td>bool</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-newrigidbody">newRigidBody</a></strong>(const std::string &amp; name, float mass, float x, float y, float z, const std::string &amp; shapeName, float restitution =0.0f, float friction =0.5f, float linearDamping =0.0f)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-newrigidbody">newRigidBody</a></strong>(const std::string &amp; name, float mass, float x, float y, float z, const std::string &amp; shapeName, float restitution =0.0f, float friction =0.5f, float linearDamping =0.0f)<br>Creates and stores a new rigid body.</td>
 </tr>
 <tr>
 <td>bool</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-deleterigidbody">deleteRigidBody</a></strong>(const std::string &amp; name)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-deleterigidbody">deleteRigidBody</a></strong>(const std::string &amp; name)<br>Deletes rigid body by name.</td>
 </tr>
 <tr>
 <td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">yourgame::util::RigidBody</a> *</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getrigidbody">getRigidBody</a></strong>(const std::string &amp; name)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getrigidbody">getRigidBody</a></strong>(const std::string &amp; name)<br>Returns rigid body by name.</td>
 </tr>
 <tr>
 <td>size_t</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-clearrigidbodies">clearRigidBodies</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-clearrigidbodies">clearRigidBodies</a></strong>()<br>Deletes all rigid bodies.</td>
 </tr>
 <tr>
 <td>size_t</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-numrigidbodies">numRigidBodies</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-numrigidbodies">numRigidBodies</a></strong>()<br>Returns the number of present rigid bodies.</td>
 </tr>
 <tr>
 <td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick</a></strong>(float dt)</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick</a></strong>(float dt)<br>Advances the physical world dt seconds.</td>
 </tr>
 <tr>
 <td>std::vector&lt; <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1Collision/">Collision</a> &gt;</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getcollisions">getCollisions</a></strong>()</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getcollisions">getCollisions</a></strong>()<br>Returns the collisions of rigid bodies since last <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick()</a></td>
 </tr>
 </tbody>
 </table>
@@ -832,6 +833,13 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Set the Gravity of the physical world. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>x</strong> x-component of gravity </li>
+<li><strong>y</strong> y-component of gravity </li>
+<li><strong>z</strong> z-component of gravity </li>
+</ul>
 <h3 id="function-newboxshape">function newBoxShape</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">newBoxShape</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
@@ -840,17 +848,36 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">halfZ</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Creates and stores a new box shape to be referenced during rigid body creation. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of the new box shape </li>
+<li><strong>halfX</strong> half extent in x dimension </li>
+<li><strong>halfY</strong> half extent in y dimension </li>
+<li><strong>halfZ</strong> half extent in z dimension </li>
+</ul>
+<p><strong>Return</strong>: true if new box shape was created, false if shape with this name existed before </p>
 <h3 id="function-deleteshape">function deleteShape</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">deleteShape</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Deletes a shape by name. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of shape to delete </li>
+</ul>
+<p><strong>Return</strong>: true if shape was deleted, false if no such shape </p>
 <h3 id="function-clearshapes">function clearShapes</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">clearShapes</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Deletes all shapes. </p>
+<p><strong>Return</strong>: number of shapes deleted </p>
 <h3 id="function-numshapes">function numShapes</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">numShapes</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Returns the number of present shapes. </p>
+<p><strong>Return</strong>: number of present shapes </p>
 <h3 id="function-newrigidbody">function newRigidBody</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">newRigidBody</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"></span>
@@ -864,32 +891,69 @@
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">linearDamping</span><span class="w"> </span><span class="o">=</span><span class="mf">0.0f</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Creates and stores a new rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of the rigid body </li>
+<li><strong>mass</strong> mass </li>
+<li><strong>x</strong> x position </li>
+<li><strong>y</strong> y position </li>
+<li><strong>z</strong> z position </li>
+<li><strong>shapeName</strong> name of the shape to use for this rigid body </li>
+<li><strong>restitution</strong> restitution </li>
+<li><strong>friction</strong> friction </li>
+<li><strong>linearDamping</strong> linearDamping </li>
+</ul>
+<p><strong>Return</strong>: true if rigid body was added, false otherwise </p>
 <h3 id="function-deleterigidbody">function deleteRigidBody</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">bool</span><span class="w"> </span><span class="n">deleteRigidBody</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Deletes rigid body by name. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of the rigidy body to delete </li>
+</ul>
+<p><strong>Return</strong>: true if rigid body was deleted, false otherwise </p>
 <h3 id="function-getrigidbody">function getRigidBody</h3>
 <div class="highlight"><pre><span></span><code><span class="n">yourgame</span><span class="o">::</span><span class="n">util</span><span class="o">::</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">getRigidBody</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Returns rigid body by name. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name of the rigid body </li>
+</ul>
+<p><strong>Return</strong>: pointer to rigid body if it exists, nullptr otherwise </p>
 <h3 id="function-clearrigidbodies">function clearRigidBodies</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">clearRigidBodies</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Deletes all rigid bodies. </p>
+<p><strong>Return</strong>: number of rigid bodies deleted </p>
 <h3 id="function-numrigidbodies">function numRigidBodies</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">numRigidBodies</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Returns the number of present rigid bodies. </p>
+<p><strong>Return</strong>: number of present rigid bodies </p>
 <h3 id="function-tick">function tick</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">tick</span><span class="p">(</span><span class="w"></span>
 <span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">dt</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
+<p>Advances the physical world dt seconds. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>dt</strong> time [seconds] to advance the physical world </li>
+</ul>
 <h3 id="function-getcollisions">function getCollisions</h3>
 <div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">Collision</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCollisions</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
+<p>Returns the collisions of rigid bodies since last <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick()</a></p>
+<p><strong>Return</strong>: collisions </p>
 <hr />
-<p>Updated on 2022-03-29 at 20:07:19 +0000</p>
+<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
 
               
             </article>

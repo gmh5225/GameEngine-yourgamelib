@@ -680,15 +680,15 @@
 <tbody>
 <tr>
 <td>class</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">yourgame::util::RigidBody</a></strong></td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">yourgame::util::RigidBody</a></strong> <br>Represents a rigid body, holding a void pointer to an underlying implementation.</td>
 </tr>
 <tr>
 <td>class</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1Collision/">yourgame::util::Collision</a></strong></td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1Collision/">yourgame::util::Collision</a></strong> <br>Represents a <a href="">Collision</a> between two rigid bodies.</td>
 </tr>
 <tr>
 <td>class</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/">yourgame::util::PhysEnv</a></strong></td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/">yourgame::util::PhysEnv</a></strong> <br>Represents a Physical Environment.</td>
 </tr>
 </tbody>
 </table>
@@ -728,25 +728,29 @@
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
 <span class="w">            </span><span class="n">RigidBody</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_name</span><span class="p">(</span><span class="n">name</span><span class="p">),</span><span class="w"> </span><span class="n">m_body</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+
 <span class="w">            </span><span class="o">~</span><span class="n">RigidBody</span><span class="p">();</span><span class="w"></span>
+
 <span class="w">            </span><span class="n">yourgame</span><span class="o">::</span><span class="n">math</span><span class="o">::</span><span class="n">Trafo</span><span class="w"> </span><span class="nf">getTrafo</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRestitution</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">restitution</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFriction</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">friction</span><span class="p">);</span><span class="w"></span>
 
-<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">Collision</span><span class="w"></span>
 <span class="w">        </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
-<span class="w">            </span><span class="n">Collision</span><span class="p">(</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">body0</span><span class="p">,</span><span class="w"> </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">body1</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">impact</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_body0</span><span class="p">(</span><span class="n">body0</span><span class="p">),</span><span class="w"></span>
-<span class="w">                                                                          </span><span class="n">m_body1</span><span class="p">(</span><span class="n">body1</span><span class="p">),</span><span class="w"></span>
-<span class="w">                                                                          </span><span class="n">m_impact</span><span class="p">(</span><span class="n">impact</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">m_body0</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">m_body1</span><span class="p">;</span><span class="w"></span>
-<span class="w">            </span><span class="kt">float</span><span class="w"> </span><span class="n">m_impact</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">Collision</span><span class="p">(</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">body0</span><span class="p">,</span><span class="w"> </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">body1</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">impulse</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_body0</span><span class="p">(</span><span class="n">body0</span><span class="p">),</span><span class="w"></span>
+<span class="w">                                                                           </span><span class="n">m_body1</span><span class="p">(</span><span class="n">body1</span><span class="p">),</span><span class="w"></span>
+<span class="w">                                                                           </span><span class="n">m_impulse</span><span class="p">(</span><span class="n">impulse</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body0</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body1</span><span class="p">;</span><span class="w"></span>
+<span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">m_impulse</span><span class="p">;</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">involves</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nameA</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">nameB</span><span class="p">)</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
 <span class="w">            </span><span class="p">{</span><span class="w"></span>
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">m_body0</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameA</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">m_body1</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameB</span><span class="p">))</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
@@ -763,8 +767,11 @@
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setGravity</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">newBoxShape</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">halfX</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">halfY</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">halfZ</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">deleteShape</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">clearShapes</span><span class="p">();</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">numShapes</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">newRigidBody</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">,</span><span class="w"></span>
@@ -776,9 +783,13 @@
 <span class="w">                              </span><span class="kt">float</span><span class="w"> </span><span class="n">restitution</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">,</span><span class="w"></span>
 <span class="w">                              </span><span class="kt">float</span><span class="w"> </span><span class="n">friction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.5f</span><span class="p">,</span><span class="w"></span>
 <span class="w">                              </span><span class="kt">float</span><span class="w"> </span><span class="n">linearDamping</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0f</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">bool</span><span class="w"> </span><span class="nf">deleteRigidBody</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="n">yourgame</span><span class="o">::</span><span class="n">util</span><span class="o">::</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="nf">getRigidBody</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">clearRigidBodies</span><span class="p">();</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">numRigidBodies</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">tick</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span><span class="w"></span>
@@ -795,7 +806,7 @@
 <span class="cp">#endif</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-03-29 at 20:07:19 +0000</p>
+<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
 
               
             </article>
