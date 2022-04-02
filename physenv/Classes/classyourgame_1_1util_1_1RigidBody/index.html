@@ -674,6 +674,34 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#function-setsleepingthresholds" class="md-nav__link">
+    function setSleepingThresholds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-setangularfactor" class="md-nav__link">
+    function setAngularFactor
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-applycentralforce" class="md-nav__link">
+    function applyCentralForce
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-applycentralimpulse" class="md-nav__link">
+    function applyCentralImpulse
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -752,6 +780,22 @@
 <td>void</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setfriction">setFriction</a></strong>(float friction)<br>Set the friction of the rigid body.</td>
 </tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setsleepingthresholds">setSleepingThresholds</a></strong>(float linear, float angular)<br>Set the Sleeping Thresholds of the rigid body.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-setangularfactor">setAngularFactor</a></strong>(float angFac)<br>Set the Angular Factor of the rigid body.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-applycentralforce">applyCentralForce</a></strong>(float x, float y, float z)<br>Apply central force to the rigid body.</td>
+</tr>
+<tr>
+<td>void</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/#function-applycentralimpulse">applyCentralImpulse</a></strong>(float x, float y, float z)<br>Apply central impulse to the rigid body.</td>
+</tr>
 </tbody>
 </table>
 <h2 id="public-attributes">Public Attributes</h2>
@@ -814,6 +858,56 @@
 <ul>
 <li><strong>friction</strong> friction </li>
 </ul>
+<h3 id="function-setsleepingthresholds">function setSleepingThresholds</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setSleepingThresholds</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">linear</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">angular</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Set the Sleeping Thresholds of the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>linear</strong> linear sleeping threshold </li>
+<li><strong>angular</strong> angular sleeping threshold </li>
+</ul>
+<h3 id="function-setangularfactor">function setAngularFactor</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">setAngularFactor</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">angFac</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Set the Angular Factor of the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>angFac</strong> angular factor </li>
+</ul>
+<h3 id="function-applycentralforce">function applyCentralForce</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">applyCentralForce</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Apply central force to the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>x</strong> x-component of force vector </li>
+<li><strong>y</strong> y-component of force vector </li>
+<li><strong>z</strong> z-component of force vector </li>
+</ul>
+<h3 id="function-applycentralimpulse">function applyCentralImpulse</h3>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">applyCentralImpulse</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Apply central impulse to the rigid body. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>x</strong> x-component of impulse vector </li>
+<li><strong>y</strong> y-component of impulse vector </li>
+<li><strong>z</strong> z-component of impulse vector </li>
+</ul>
 <h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
 <h3 id="variable-m_name">variable m_name</h3>
 <div class="highlight"><pre><span></span><code><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
@@ -822,7 +916,7 @@
 <div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
+<p>Updated on 2022-04-02 at 20:35:25 +0000</p>
 
               
             </article>

@@ -13,7 +13,7 @@
     
     
       
-        <title>yourgame::gl::Texture - YourGameLib</title>
+        <title>yourgame::util::RayTestResult - YourGameLib</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#yourgamegltexture" class="md-skip">
+        <a href="#yourgameutilraytestresult" class="md-skip">
           Skip to content
         </a>
       
@@ -102,7 +102,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              yourgame::gl::Texture
+              yourgame::util::RayTestResult
             
           </span>
         </div>
@@ -625,6 +625,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#public-attributes" class="md-nav__link">
+    Public Attributes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#public-functions-documentation" class="md-nav__link">
     Public Functions Documentation
   </a>
@@ -633,71 +640,28 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-make" class="md-nav__link">
-    function make
+  <a href="#function-raytestresult" class="md-nav__link">
+    function RayTestResult
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#function-texture" class="md-nav__link">
-    function Texture
-  </a>
+      </ul>
+    </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#function-operator" class="md-nav__link">
-    function operator=
+      
+        <li class="md-nav__item">
+  <a href="#public-attributes-documentation" class="md-nav__link">
+    Public Attributes Documentation
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="Public Attributes Documentation">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#function-texture_1" class="md-nav__link">
-    function ~Texture
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-bind" class="md-nav__link">
-    function bind
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-unbindtarget" class="md-nav__link">
-    function unbindTarget
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-updatedata" class="md-nav__link">
-    function updateData
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-width" class="md-nav__link">
-    function width
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-height" class="md-nav__link">
-    function height
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#function-handle" class="md-nav__link">
-    function handle
+  <a href="#variable-m_rigidbody" class="md-nav__link">
+    variable m_rigidBody
   </a>
   
 </li>
@@ -721,8 +685,9 @@
                 
 
 
-<h1 id="yourgamegltexture">yourgame::gl::Texture</h1>
-<p><code>#include &lt;texture.h&gt;</code></p>
+<h1 id="yourgameutilraytestresult">yourgame::util::RayTestResult</h1>
+<p>Represents the result of a ray test. </p>
+<p><code>#include &lt;physenv.h&gt;</code></p>
 <h2 id="public-functions">Public Functions</h2>
 <table>
 <thead>
@@ -733,96 +698,35 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/">Texture</a> *</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-make">make</a></strong>(GLenum target, GLenum unit, const std::vector&lt; std::pair&lt; GLenum, GLint &gt;&gt; &amp; parameteri)</td>
-</tr>
-<tr>
 <td></td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-texture">Texture</a></strong>(<a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/">Texture</a> const &amp; ) =delete</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RayTestResult/#function-raytestresult">RayTestResult</a></strong>(<a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">RigidBody</a> * rigidBody)</td>
 </tr>
+</tbody>
+</table>
+<h2 id="public-attributes">Public Attributes</h2>
+<table>
+<thead>
 <tr>
-<td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/">Texture</a> &amp;</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-operator=">operator=</a></strong>(<a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/">Texture</a> const &amp; ) =delete</td>
+<th></th>
+<th>Name</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td></td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-~texture">~Texture</a></strong>()</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-bind">bind</a></strong>() const</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-unbindtarget">unbindTarget</a></strong>() const</td>
-</tr>
-<tr>
-<td>void</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-updatedata">updateData</a></strong>(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const void * data, bool generateMipmap)</td>
-</tr>
-<tr>
-<td>GLsizei</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-width">width</a></strong>() const</td>
-</tr>
-<tr>
-<td>GLsizei</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-height">height</a></strong>() const</td>
-</tr>
-<tr>
-<td>GLuint</td>
-<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1gl_1_1Texture/#function-handle">handle</a></strong>() const</td>
+<td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">RigidBody</a> *</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RayTestResult/#variable-m-rigidbody">m_rigidBody</a></strong></td>
 </tr>
 </tbody>
 </table>
 <h2 id="public-functions-documentation">Public Functions Documentation</h2>
-<h3 id="function-make">function make</h3>
-<div class="highlight"><pre><span></span><code><span class="k">static</span><span class="w"> </span><span class="n">Texture</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">make</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLenum</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLenum</span><span class="w"> </span><span class="n">unit</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="w"> </span><span class="n">GLenum</span><span class="p">,</span><span class="w"> </span><span class="n">GLint</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">parameteri</span><span class="w"></span>
+<h3 id="function-raytestresult">function RayTestResult</h3>
+<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">RayTestResult</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">rigidBody</span><span class="w"></span>
 <span class="p">)</span><span class="w"></span>
 </code></pre></div>
-<h3 id="function-texture">function Texture</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Texture</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">Texture</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
-<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="k">delete</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-operator">function operator=</h3>
-<div class="highlight"><pre><span></span><code><span class="n">Texture</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="k">operator</span><span class="o">=</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">Texture</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span>
-<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="k">delete</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-texture_1">function ~Texture</h3>
-<div class="highlight"><pre><span></span><code><span class="o">~</span><span class="n">Texture</span><span class="p">()</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-bind">function bind</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">bind</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-unbindtarget">function unbindTarget</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">unbindTarget</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-updatedata">function updateData</h3>
-<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="n">updateData</span><span class="p">(</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLenum</span><span class="w"> </span><span class="n">target</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLint</span><span class="w"> </span><span class="n">level</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLint</span><span class="w"> </span><span class="n">internalformat</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLsizei</span><span class="w"> </span><span class="n">width</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLsizei</span><span class="w"> </span><span class="n">height</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLint</span><span class="w"> </span><span class="n">border</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLenum</span><span class="w"> </span><span class="n">format</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">GLenum</span><span class="w"> </span><span class="n">type</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">data</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="n">generateMipmap</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-width">function width</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">GLsizei</span><span class="w"> </span><span class="n">width</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-height">function height</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">GLsizei</span><span class="w"> </span><span class="n">height</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
-</code></pre></div>
-<h3 id="function-handle">function handle</h3>
-<div class="highlight"><pre><span></span><code><span class="kr">inline</span><span class="w"> </span><span class="n">GLuint</span><span class="w"> </span><span class="n">handle</span><span class="p">()</span><span class="w"> </span><span class="k">const</span><span class="w"></span>
+<h2 id="public-attributes-documentation">Public Attributes Documentation</h2>
+<h3 id="variable-m_rigidbody">variable m_rigidBody</h3>
+<div class="highlight"><pre><span></span><code><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">m_rigidBody</span><span class="p">;</span><span class="w"></span>
 </code></pre></div>
 <hr />
 <p>Updated on 2022-04-02 at 20:35:25 +0000</p>

@@ -703,6 +703,13 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#function-getrigidbodiesstartingwith" class="md-nav__link">
+    function getRigidBodiesStartingWith
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#function-clearrigidbodies" class="md-nav__link">
     function clearRigidBodies
   </a>
@@ -726,6 +733,13 @@
           <li class="md-nav__item">
   <a href="#function-getcollisions" class="md-nav__link">
     function getCollisions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#function-raytest" class="md-nav__link">
+    function rayTest
   </a>
   
 </li>
@@ -802,6 +816,10 @@
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getrigidbody">getRigidBody</a></strong>(const std::string &amp; name)<br>Returns rigid body by name.</td>
 </tr>
 <tr>
+<td>std::vector&lt; <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RigidBody/">RigidBody</a> * &gt;</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getrigidbodiesstartingwith">getRigidBodiesStartingWith</a></strong>(const std::string &amp; name)<br>Returns rigid bodies with names starting with name.</td>
+</tr>
+<tr>
 <td>size_t</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-clearrigidbodies">clearRigidBodies</a></strong>()<br>Deletes all rigid bodies.</td>
 </tr>
@@ -816,6 +834,10 @@
 <tr>
 <td>std::vector&lt; <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1Collision/">Collision</a> &gt;</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-getcollisions">getCollisions</a></strong>()<br>Returns the collisions of rigid bodies since last <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick()</a></td>
+</tr>
+<tr>
+<td><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RayTestResult/">RayTestResult</a></td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-raytest">rayTest</a></strong>(float eyeX, float eyeY, float eyeZ, float targetX, float targetY, float targetZ)<br>Shoots a ray from eye to target into the world. Result contains first rigid body hit, if any.</td>
 </tr>
 </tbody>
 </table>
@@ -927,6 +949,17 @@
 <li><strong>name</strong> name of the rigid body </li>
 </ul>
 <p><strong>Return</strong>: pointer to rigid body if it exists, nullptr otherwise </p>
+<h3 id="function-getrigidbodiesstartingwith">function getRigidBodiesStartingWith</h3>
+<div class="highlight"><pre><span></span><code><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="w"> </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">getRigidBodiesStartingWith</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">name</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Returns rigid bodies with names starting with name. </p>
+<p><strong>Parameters</strong>: </p>
+<ul>
+<li><strong>name</strong> name (prefix) of rigid bodies to get </li>
+</ul>
+<p><strong>Return</strong>: matching rigid bodies </p>
 <h3 id="function-clearrigidbodies">function clearRigidBodies</h3>
 <div class="highlight"><pre><span></span><code><span class="kt">size_t</span><span class="w"> </span><span class="n">clearRigidBodies</span><span class="p">()</span><span class="w"></span>
 </code></pre></div>
@@ -952,8 +985,20 @@
 </code></pre></div>
 <p>Returns the collisions of rigid bodies since last <a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/#function-tick">tick()</a></p>
 <p><strong>Return</strong>: collisions </p>
+<h3 id="function-raytest">function rayTest</h3>
+<div class="highlight"><pre><span></span><code><span class="n">RayTestResult</span><span class="w"> </span><span class="n">rayTest</span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">eyeX</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">eyeY</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">eyeZ</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">targetX</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">targetY</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">targetZ</span><span class="w"></span>
+<span class="p">)</span><span class="w"></span>
+</code></pre></div>
+<p>Shoots a ray from eye to target into the world. Result contains first rigid body hit, if any. </p>
+<p><strong>Return</strong>: Result of the ray test </p>
 <hr />
-<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
+<p>Updated on 2022-04-02 at 20:35:25 +0000</p>
 
               
             </article>

@@ -688,6 +688,10 @@
 </tr>
 <tr>
 <td>class</td>
+<td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1RayTestResult/">yourgame::util::RayTestResult</a></strong> <br>Represents the result of a ray test.</td>
+</tr>
+<tr>
+<td>class</td>
 <td><strong><a href="/yourgamelib/physenv/Classes/classyourgame_1_1util_1_1PhysEnv/">yourgame::util::PhysEnv</a></strong> <br>Represents a Physical Environment.</td>
 </tr>
 </tbody>
@@ -737,6 +741,14 @@
 
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setFriction</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">friction</span><span class="p">);</span><span class="w"></span>
 
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setSleepingThresholds</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">linear</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">angular</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAngularFactor</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">angFac</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">applyCentralForce</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+
+<span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">applyCentralImpulse</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">z</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="n">m_name</span><span class="p">;</span><span class="w"></span>
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="k">const</span><span class="w"> </span><span class="n">m_body</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="p">};</span><span class="w"></span>
@@ -756,6 +768,13 @@
 <span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">((</span><span class="n">m_body0</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameA</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">m_body1</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameB</span><span class="p">))</span><span class="w"> </span><span class="o">||</span><span class="w"></span>
 <span class="w">                       </span><span class="p">((</span><span class="n">m_body0</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameB</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">m_body1</span><span class="o">-&gt;</span><span class="n">m_name</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">nameA</span><span class="p">));</span><span class="w"></span>
 <span class="w">            </span><span class="p">}</span><span class="w"></span>
+<span class="w">        </span><span class="p">};</span><span class="w"></span>
+
+<span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">RayTestResult</span><span class="w"></span>
+<span class="w">        </span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="k">public</span><span class="o">:</span><span class="w"></span>
+<span class="w">            </span><span class="n">RayTestResult</span><span class="p">(</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">rigidBody</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">m_rigidBody</span><span class="p">(</span><span class="n">rigidBody</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="w">            </span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="n">m_rigidBody</span><span class="p">;</span><span class="w"></span>
 <span class="w">        </span><span class="p">};</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">class</span><span class="w"> </span><span class="nc">PhysEnv</span><span class="w"></span>
@@ -788,6 +807,8 @@
 
 <span class="w">            </span><span class="n">yourgame</span><span class="o">::</span><span class="n">util</span><span class="o">::</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*</span><span class="nf">getRigidBody</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
 
+<span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">RigidBody</span><span class="w"> </span><span class="o">*&gt;</span><span class="w"> </span><span class="n">getRigidBodiesStartingWith</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="w"> </span><span class="o">&amp;</span><span class="n">name</span><span class="p">);</span><span class="w"></span>
+
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">clearRigidBodies</span><span class="p">();</span><span class="w"></span>
 
 <span class="w">            </span><span class="kt">size_t</span><span class="w"> </span><span class="nf">numRigidBodies</span><span class="p">();</span><span class="w"></span>
@@ -795,6 +816,8 @@
 <span class="w">            </span><span class="kt">void</span><span class="w"> </span><span class="nf">tick</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">dt</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">            </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">Collision</span><span class="o">&gt;</span><span class="w"> </span><span class="n">getCollisions</span><span class="p">();</span><span class="w"></span>
+
+<span class="w">            </span><span class="n">RayTestResult</span><span class="w"> </span><span class="nf">rayTest</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="n">eyeX</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">eyeY</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">eyeZ</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetX</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetY</span><span class="p">,</span><span class="w"> </span><span class="kt">float</span><span class="w"> </span><span class="n">targetZ</span><span class="p">);</span><span class="w"></span>
 
 <span class="w">        </span><span class="k">private</span><span class="o">:</span><span class="w"></span>
 <span class="w">            </span><span class="k">class</span><span class="w"> </span><span class="nc">impl</span><span class="p">;</span><span class="w"></span>
@@ -806,7 +829,7 @@
 <span class="cp">#endif</span>
 </code></pre></div>
 <hr />
-<p>Updated on 2022-03-30 at 20:26:07 +0000</p>
+<p>Updated on 2022-04-02 at 20:35:25 +0000</p>
 
               
             </article>
