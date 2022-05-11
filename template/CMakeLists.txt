@@ -149,19 +149,23 @@ if(YOURGAME_PLATFORM STREQUAL "web")
   # ALLOW_MEMORY_GROWTH=1 was added after commit bd08b66, where initializing
   # of flecs caused the web app to crash
   # todo: what exactly does ALLOW_MEMORY_GROWTH mean?
+  # ASYNCIFY is required for emscripten_wget_data() etc.
   set(C_CXX_FLAGS_FOR_EM
     "-s USE_GLFW=3 \
     -s USE_WEBGL2=1 \
     -s ALLOW_MEMORY_GROWTH=1 \
+    -s ASYNCIFY \
     --shell-file ${CMAKE_CURRENT_SOURCE_DIR}/shell.html")
+
+  # todo: do not pack any assets
   # make sure assets/ gets copied into the wasm file system,
   # but only if any asset files exist
-  file(GLOB ASSET_FILES ${CMAKE_CURRENT_SOURCE_DIR}/assets/*.*)
-  if(ASSET_FILES)
-    set(C_CXX_FLAGS_FOR_EM
-      "${C_CXX_FLAGS_FOR_EM} \
-      --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@/assets")
-  endif()
+  #file(GLOB ASSET_FILES ${CMAKE_CURRENT_SOURCE_DIR}/assets/*.*)
+  #if(ASSET_FILES)
+  #  set(C_CXX_FLAGS_FOR_EM
+  #    "${C_CXX_FLAGS_FOR_EM} \
+  #    --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@/assets")
+  #endif()
 
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_CXX_FLAGS_FOR_EM}")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C_CXX_FLAGS_FOR_EM}")
@@ -172,9 +176,9 @@ if(YOURGAME_PLATFORM STREQUAL "web")
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.html DESTINATION . RENAME index.html)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.js DESTINATION .)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.wasm DESTINATION .)
-    if(ASSET_FILES)
-      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.data DESTINATION .)
-    endif()
+    #if(ASSET_FILES)
+    #  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.data DESTINATION .)
+    #endif()
     set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
     include(CPack)
   endif()

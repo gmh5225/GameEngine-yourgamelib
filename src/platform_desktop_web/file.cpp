@@ -24,8 +24,11 @@ freely, subject to the following restrictions:
 #include "dirent.h"
 #ifndef __EMSCRIPTEN__
 #include "whereami.h"
+#else
+#include <emscripten/emscripten.h>
 #endif
 #include "yourgame/log.h"
+#include "yourgame/file.h"
 #include "yourgame_internal/file.h"
 
 namespace yourgame_internal_desktop
@@ -38,7 +41,7 @@ namespace yourgame_internal_desktop
     void initFile()
     {
 #ifdef __EMSCRIPTEN__
-        assetPathAbs = "/assets/";
+        assetPathAbs = "/home/web_user/";
         yourgame_internal::saveFilesPathAbs = "/home/web_user/";
         yourgame_internal::projectPathAbs = "";
 #else
@@ -75,7 +78,51 @@ namespace yourgame
     {
         int readAssetFile(const std::string &filename, std::vector<uint8_t> &dst)
         {
+#ifdef __EMSCRIPTEN__
+            // todo https://emscripten.org/docs/api_reference/emscripten.h.html
+
+            // 1. try to load asset from asset directory
+            int ret = yourgame_internal::readFileFromPath(yourgame_internal_desktop::assetPathAbs + filename, dst);
+            if (ret == 0)
+            {
+                yourgame::log::debug("loaded asset %v from %v", filename, yourgame_internal_desktop::assetPathAbs);
+                return ret;
+            }
+            else
+            // 2. try to download asset
+            {
+                for (const auto &a : {"./assets/", "../assets/"})
+                {
+                    void *wgetData;
+                    int wgetSize;
+                    int wgetError;
+
+                    emscripten_wget_data((a + filename).c_str(), &wgetData, &wgetSize, &wgetError);
+
+                    if (wgetError == 0)
+                    {
+                        yourgame::log::debug("downloaded asset %v from %v, %v bytes", filename, a, wgetSize);
+
+                        // save downloaded asset in asset directory
+                        int ret1 = yourgame::file::writeAssetFile(filename, wgetData, wgetSize);
+
+                        if (ret1 == 0)
+                        {
+                            yourgame::log::debug("saved asset, ret: %v", ret1);
+                        }
+
+                        dst.resize(wgetSize);
+                        std::memcpy(&dst[0], wgetData, wgetSize);
+                        std::free(wgetData);
+                        return 0;
+                    } // todo free in error case?
+                }
+            }
+
+            return -1;
+#else
             return yourgame_internal::readFileFromPath(yourgame_internal_desktop::assetPathAbs + filename, dst);
+#endif
         }
 
         int writeAssetFile(const std::string &filename, const void *data, size_t numBytes)
