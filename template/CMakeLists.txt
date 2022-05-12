@@ -157,15 +157,19 @@ if(YOURGAME_PLATFORM STREQUAL "web")
     -s ASYNCIFY \
     --shell-file ${CMAKE_CURRENT_SOURCE_DIR}/shell.html")
 
-  # todo: do not pack any assets
-  # make sure assets/ gets copied into the wasm file system,
-  # but only if any asset files exist
-  #file(GLOB ASSET_FILES ${CMAKE_CURRENT_SOURCE_DIR}/assets/*.*)
-  #if(ASSET_FILES)
-  #  set(C_CXX_FLAGS_FOR_EM
-  #    "${C_CXX_FLAGS_FOR_EM} \
-  #    --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@/assets")
-  #endif()
+  # change the following line to
+  #   if(YES)
+  # to copy assets (if any) into the wasm file system. only recommended
+  # if the assets are final and not to be updated and loaded from
+  # assets/ directory during runtime
+  if(NO)
+    file(GLOB ASSET_FILES ${CMAKE_CURRENT_SOURCE_DIR}/assets/*.*)
+    if(ASSET_FILES)
+      set(C_CXX_FLAGS_FOR_EM
+        "${C_CXX_FLAGS_FOR_EM} \
+        --preload-file ${CMAKE_CURRENT_SOURCE_DIR}/assets@/home/web_user/")
+    endif()
+  endif()
 
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${C_CXX_FLAGS_FOR_EM}")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${C_CXX_FLAGS_FOR_EM}")
@@ -176,9 +180,9 @@ if(YOURGAME_PLATFORM STREQUAL "web")
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.html DESTINATION . RENAME index.html)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.js DESTINATION .)
     install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.wasm DESTINATION .)
-    #if(ASSET_FILES)
-    #  install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.data DESTINATION .)
-    #endif()
+    if(ASSET_FILES)
+      install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${CMAKE_PROJECT_NAME}.data DESTINATION .)
+    endif()
     set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
     include(CPack)
   endif()

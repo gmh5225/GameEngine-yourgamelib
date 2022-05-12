@@ -79,8 +79,6 @@ namespace yourgame
         int readAssetFile(const std::string &filename, std::vector<uint8_t> &dst)
         {
 #ifdef __EMSCRIPTEN__
-            // todo https://emscripten.org/docs/api_reference/emscripten.h.html
-
             // 1. try to load asset from asset directory
             int ret = yourgame_internal::readFileFromPath(yourgame_internal_desktop::assetPathAbs + filename, dst);
             if (ret == 0)
