@@ -78,16 +78,21 @@ namespace yourgame
     {
         int readAssetFile(const std::string &filename, std::vector<uint8_t> &dst)
         {
-#ifdef __EMSCRIPTEN__
-            // 1. try to load asset from asset directory
+            // on platform desktop: try to read file from the actual assets directory.
+            // on platform web, this is transient memory. assets are only available if they
+            // have been packed by emscripten or have been downloaded before (see below).
             int ret = yourgame_internal::readFileFromPath(yourgame_internal_desktop::assetPathAbs + filename, dst);
             if (ret == 0)
             {
-                yourgame::log::debug("loaded asset %v from %v", filename, yourgame_internal_desktop::assetPathAbs);
-                return ret;
+                yourgame::log::debug("readAssetFile(): successfully read asset %v from %v", filename, yourgame_internal_desktop::assetPathAbs);
             }
-            else
-            // 2. try to download asset
+
+// on platform desktop, return result of readFileFromPath()
+#ifndef __EMSCRIPTEN__
+            return ret;
+// on platform web, try to download (wget) the file
+#else
+            if (ret != 0)
             {
                 for (const auto &a : {"./assets/", "../assets/"})
                 {
@@ -99,27 +104,29 @@ namespace yourgame
 
                     if (wgetError == 0)
                     {
-                        yourgame::log::debug("downloaded asset %v from %v, %v bytes", filename, a, wgetSize);
+                        yourgame::log::debug("readAssetFile(): successfully downloaded asset %v from %v, %v bytes", filename, a, wgetSize);
 
                         // save downloaded asset in asset directory
                         int ret1 = yourgame::file::writeAssetFile(filename, wgetData, wgetSize);
 
                         if (ret1 == 0)
                         {
-                            yourgame::log::debug("saved asset, ret: %v", ret1);
+                            yourgame::log::debug("readAssetFile() successfully saved asset %v", filename);
+                        }
+                        else
+                        {
+                            yourgame::log::debug("readAssetFile() failed to save asset %v", filename);
                         }
 
                         dst.resize(wgetSize);
                         std::memcpy(&dst[0], wgetData, wgetSize);
                         std::free(wgetData);
                         return 0;
-                    } // todo free in error case?
+                    }
                 }
             }
 
             return -1;
-#else
-            return yourgame_internal::readFileFromPath(yourgame_internal_desktop::assetPathAbs + filename, dst);
 #endif
         }
 
