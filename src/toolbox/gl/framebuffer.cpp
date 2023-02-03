@@ -102,14 +102,7 @@ namespace yourgame
 
         yourgame::gl::Texture *Framebuffer::textureAttachment(int idx)
         {
-            try
-            {
-                return m_textureAttachments.at(idx);
-            }
-            catch (...)
-            {
-                return nullptr;
-            }
+            return m_textureAttachments.at(idx);
         }
     }
 } // namespace yourgame

@@ -111,15 +111,8 @@ namespace yourgame
             }
 
             json jAtlas;
-            try
-            {
-                jAtlas = json::parse(atlasFile);
-            }
-            catch (std::exception &e)
-            {
-                yourgame::log::error("failed to parse json from %v: %v", filename, e.what());
-                return nullptr;
-            }
+			
+            jAtlas = json::parse(atlasFile);
 
             TextureAtlas *newAtlas = new TextureAtlas();
 
@@ -379,8 +372,8 @@ namespace yourgame
                         std::array<int, 4>{idx.vertex_index, idx.normal_index, idx.texcoord_index, materialId}, uniqueVertCount);
                     if (mapRet.second) // new unique vertex
                     {
-                        try
-                        {
+                        
+                        
                             objIdxData.push_back(uniqueVertCount);
                             objPosData.push_back((GLfloat)attribs.vertices.at(idx.vertex_index * 3));
                             objPosData.push_back((GLfloat)attribs.vertices.at(idx.vertex_index * 3 + 1));
@@ -417,12 +410,8 @@ namespace yourgame
                                 objTexCoordData.push_back((GLfloat)attribs.texcoords.at(idx.texcoord_index * 2));
                                 objTexCoordData.push_back((GLfloat)attribs.texcoords.at(idx.texcoord_index * 2 + 1));
                             }
-                        }
-                        catch (...)
-                        {
-                            yourgame::log::error("loadGeometry(): %v has faulty obj vertex data", objFilename);
-                            return nullptr;
-                        }
+                        
+                      
                         uniqueVertCount++;
                     }
                     else // reuse unique vertex index
@@ -446,8 +435,7 @@ namespace yourgame
                         std::array<int, 4>{idx.vertex_index, idx.normal_index, idx.texcoord_index, materialId}, uniqueVertCount);
                     if (mapRet.second) // new unique vertex
                     {
-                        try
-                        {
+                        
                             objLineIdxData.push_back(uniqueVertCount);
                             objPosData.push_back((GLfloat)attribs.vertices.at(idx.vertex_index * 3));
                             objPosData.push_back((GLfloat)attribs.vertices.at(idx.vertex_index * 3 + 1));
@@ -470,12 +458,7 @@ namespace yourgame
                                 objTexCoordData.push_back((GLfloat)attribs.texcoords.at(idx.texcoord_index * 2));
                                 objTexCoordData.push_back((GLfloat)attribs.texcoords.at(idx.texcoord_index * 2 + 1));
                             }
-                        }
-                        catch (...)
-                        {
-                            yourgame::log::error("loadGeometry(): %v has faulty line obj vertex data for", objFilename);
-                            return nullptr;
-                        }
+                       
                         uniqueVertCount++;
                     }
                     else // reuse unique vertex index

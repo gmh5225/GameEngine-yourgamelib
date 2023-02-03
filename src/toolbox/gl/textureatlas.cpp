@@ -107,14 +107,7 @@ namespace yourgame
 
         yourgame::gl::Texture *TextureAtlas::texture(int idx) const
         {
-            try
-            {
-                return m_textures.at(idx);
-            }
-            catch (...)
-            {
-                return nullptr;
-            }
+            return m_textures.at(idx);
         }
     }
 } // namespace yourgame

@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.6)
 find_package(Git)
 
+set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
+
 # yourgame library project + version
 project(yourgame VERSION 0.0.0)
 

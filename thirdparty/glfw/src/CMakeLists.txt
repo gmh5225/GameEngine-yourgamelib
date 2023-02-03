@@ -5,6 +5,8 @@ set(common_HEADERS internal.h mappings.h
                    "${GLFW_SOURCE_DIR}/include/GLFW/glfw3native.h")
 set(common_SOURCES context.c init.c input.c monitor.c vulkan.c window.c)
 
+set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
+
 if (_GLFW_COCOA)
     set(glfw_HEADERS ${common_HEADERS} cocoa_platform.h cocoa_joystick.h
                      posix_thread.h nsgl_context.h egl_context.h osmesa_context.h)
