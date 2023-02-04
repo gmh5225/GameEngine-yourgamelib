@@ -231,8 +231,27 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
   yourgame
 )
 
-target_link_libraries(fpslib PRIVATE
-  yourgame
+
+target_link_libraries(fpslib combinedLib yourgame)  # Important to place before add_custom_target
+
+set(LIBNAME "combinedLib.lib")
+add_custom_command(
+    OUTPUT ${LIBNAME}
+    COMMAND lib.exe /OUT:${LIBNAME} 
+    $<TARGET_FILE:yourgame> 
+    $<TARGET_FILE:LinearMath> 
+    $<TARGET_FILE:Bullet3Common> 
+    $<TARGET_FILE:BulletCollision>
+    $<TARGET_FILE:BulletDynamics>
+    $<TARGET_FILE:BulletInverseDynamics>
+    $<TARGET_FILE:BulletSoftBody>
+    $<TARGET_FILE:glfw>
+    DEPENDS yourgame LinearMath Bullet3Common BulletCollision BulletDynamics BulletInverseDynamics BulletSoftBody glfw
+    COMMENT "Combining libs..."
+)
+
+add_custom_target(combinedLib
+    DEPENDS ${LIBNAME}
 )
 
 target_link_libraries(fpsdll PRIVATE
