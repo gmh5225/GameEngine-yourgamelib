@@ -124,6 +124,9 @@ if(YOURGAME_PLATFORM STREQUAL "web" OR YOURGAME_PLATFORM STREQUAL "desktop")
   add_executable(${CMAKE_PROJECT_NAME}
     ${MYGAME_SRC_FILES}
   )
+  add_library(fpslib STATIC
+    ${MYGAME_SRC_FILES}
+  )
 endif()
 
 if(YOURGAME_PLATFORM STREQUAL "desktop")
@@ -133,6 +136,13 @@ if(YOURGAME_PLATFORM STREQUAL "desktop")
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory
     "$<TARGET_FILE_DIR:${CMAKE_PROJECT_NAME}>/savefiles"
+  )
+
+   add_custom_command(
+    TARGET fpslib
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+    "$<TARGET_FILE_DIR:fpslib>/savefiles"
   )
 
   if(CPACK_GENERATOR)
@@ -199,6 +209,14 @@ target_include_directories(${CMAKE_PROJECT_NAME}
   PRIVATE ${MYGAME_INC_DIRS_PRIVATE}
 )
 
+target_include_directories(fpslib
+  PRIVATE ${MYGAME_INC_DIRS_PRIVATE}
+)
+
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
+  yourgame
+)
+
+target_link_libraries(fpslib PRIVATE
   yourgame
 )
