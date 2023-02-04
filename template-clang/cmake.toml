@@ -9,11 +9,38 @@ type = "executable"
 include-directories = [
     "../include/base",
     "../include/toolbox",
+    "../thirdparty/glfw/include",
+    "../thirdparty/glad-gl3.3-core/include",
+    "../thirdparty/easyloggingpp",
+    "../thirdparty/glm",
 ]
 headers = ["src/**.h"]
 sources = [
     "src/**.cpp"
 ]
 compile-features = ["cxx_std_20"]
+compile-definitions = [
+"YOURGAME_TOOLBOX", 
+"YOURGAME_PLATFORM_DESKTOP",
+"YOURGAME_GL_API_GL",
+"YOURGAME_GL_MINOR=3",
+"YOURGAME_GL_MAJOR=3",
+"YOURGAME_GL_INCLUDE_GLAD",
+"YOURGAME_GL_EXT_LOADER_GLAD",
+"YOURGAME_EXTPROJ_glm",
+"YOURGAME_EXTPROJ_imgui",
+"YOURGAME_EXTPROJ_json",
+"STB_VORBIS_NO_STDIO",
+"STB_VORBIS_NO_STDIO",
+"YOURGAME_EXTPROJ_stb",
+"YOURGAME_EXTPROJ_stb",
+"YOURGAME_EXTPROJ_tinyobjloader",
+"ELPP_STL_LOGGING",
+"YOURGAME_EXTPROJ_easyloggingpp",
+"YOURGAME_EXTPROJ_dirent",
+"YOURGAME_EXTPROJ_whereami",
+"YOURGAME_EXTPROJ_glfw",
+"YOURGAME_EXTPROJ_glad_gl3_3_core"
+]
 link-libraries = ["glfw3.lib", "yourgame.lib"]
 

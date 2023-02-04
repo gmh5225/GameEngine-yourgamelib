@@ -39,6 +39,30 @@ add_executable(template)
 target_sources(template PRIVATE ${template_SOURCES})
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${template_SOURCES})
 
+target_compile_definitions(template PRIVATE
+	YOURGAME_TOOLBOX
+	YOURGAME_PLATFORM_DESKTOP
+	YOURGAME_GL_API_GL
+	YOURGAME_GL_MINOR=3
+	YOURGAME_GL_MAJOR=3
+	YOURGAME_GL_INCLUDE_GLAD
+	YOURGAME_GL_EXT_LOADER_GLAD
+	YOURGAME_EXTPROJ_glm
+	YOURGAME_EXTPROJ_imgui
+	YOURGAME_EXTPROJ_json
+	STB_VORBIS_NO_STDIO
+	STB_VORBIS_NO_STDIO
+	YOURGAME_EXTPROJ_stb
+	YOURGAME_EXTPROJ_stb
+	YOURGAME_EXTPROJ_tinyobjloader
+	ELPP_STL_LOGGING
+	YOURGAME_EXTPROJ_easyloggingpp
+	YOURGAME_EXTPROJ_dirent
+	YOURGAME_EXTPROJ_whereami
+	YOURGAME_EXTPROJ_glfw
+	YOURGAME_EXTPROJ_glad_gl3_3_core
+)
+
 target_compile_features(template PRIVATE
 	cxx_std_20
 )
@@ -46,6 +70,10 @@ target_compile_features(template PRIVATE
 target_include_directories(template PRIVATE
 	"../include/base"
 	"../include/toolbox"
+	"../thirdparty/glfw/include"
+	"../thirdparty/glad-gl3.3-core/include"
+	"../thirdparty/easyloggingpp"
+	"../thirdparty/glm"
 )
 
 target_link_libraries(template PRIVATE

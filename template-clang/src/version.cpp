@@ -17,9 +17,9 @@ freely, subject to the following restrictions:
    misrepresented as being the original software.
 3. This notice may not be removed or altered from any source distribution.
 */
-#include "yourgame/version.h"
+#include "mygame_version.h"
 
-namespace yourgame
+namespace mygame
 {
     namespace version
     {
