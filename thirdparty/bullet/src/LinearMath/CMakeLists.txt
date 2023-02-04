@@ -1,4 +1,6 @@
 
+set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
+
 INCLUDE_DIRECTORIES(
 	${BULLET_PHYSICS_SOURCE_DIR}/src
 )

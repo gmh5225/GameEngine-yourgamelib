@@ -3,6 +3,8 @@ INCLUDE_DIRECTORIES(
 	${BULLET_PHYSICS_SOURCE_DIR}/src
 )
 
+set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
+
 SET(Bullet3Common_SRCS
 	b3AlignedAllocator.cpp
 	b3Vector3.cpp
