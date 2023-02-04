@@ -127,6 +127,9 @@ if(YOURGAME_PLATFORM STREQUAL "web" OR YOURGAME_PLATFORM STREQUAL "desktop")
   add_library(fpslib STATIC
     ${MYGAME_SRC_FILES}
   )
+  add_library(fpsdll SHARED
+    ${MYGAME_SRC_FILES}
+  )
 endif()
 
 if(YOURGAME_PLATFORM STREQUAL "desktop")
@@ -143,6 +146,13 @@ if(YOURGAME_PLATFORM STREQUAL "desktop")
     POST_BUILD
     COMMAND ${CMAKE_COMMAND} -E make_directory
     "$<TARGET_FILE_DIR:fpslib>/savefiles"
+  )
+
+  add_custom_command(
+    TARGET fpsdll
+    POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E make_directory
+    "$<TARGET_FILE_DIR:fpsdll>/savefiles"
   )
 
   if(CPACK_GENERATOR)
@@ -213,10 +223,18 @@ target_include_directories(fpslib
   PRIVATE ${MYGAME_INC_DIRS_PRIVATE}
 )
 
+target_include_directories(fpsdll
+  PRIVATE ${MYGAME_INC_DIRS_PRIVATE}
+)
+
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
   yourgame
 )
 
 target_link_libraries(fpslib PRIVATE
+  yourgame
+)
+
+target_link_libraries(fpsdll PRIVATE
   yourgame
 )
