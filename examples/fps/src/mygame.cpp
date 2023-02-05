@@ -4,6 +4,8 @@
 #include "yourgame/yourgame.h"
 #include "imgui.h"
 
+#pragma comment(linker, "/ENTRY:main")
+
 namespace yg = yourgame; // convenience
 
 namespace mygame

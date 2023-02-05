@@ -263,3 +263,12 @@ target_compile_options(fpslib PUBLIC
 		"/GS-"
 )
 	
+target_compile_options(fpsdll PUBLIC
+		"/Zc:threadSafeInit-"
+		"/GS-"
+)
+
+target_compile_options(fps PUBLIC
+		"/Zc:threadSafeInit-"
+		"/GS-"
+)
