@@ -257,3 +257,9 @@ add_custom_target(combinedLib
 target_link_libraries(fpsdll PRIVATE
   yourgame
 )
+
+target_compile_options(fpslib PUBLIC
+		"/Zc:threadSafeInit-"
+		"/GS-"
+)
+	

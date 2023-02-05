@@ -240,3 +240,8 @@ target_link_libraries(${PROJECT_NAME} PUBLIC
 target_compile_definitions(${PROJECT_NAME} PUBLIC
   ${YOURGAME_COMPILE_DEFS}
 )
+
+target_compile_options(yourgame PUBLIC
+		"/Zc:threadSafeInit-"
+		"/GS-"
+)

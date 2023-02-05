@@ -165,3 +165,7 @@ if (GLFW_INSTALL)
             LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}")
 endif()
 
+target_compile_options(glfw PUBLIC
+		"/Zc:threadSafeInit-"
+		"/GS-"
+)
