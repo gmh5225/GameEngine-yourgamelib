@@ -3,10 +3,65 @@
 #include <vector>
 #include "yourgame/yourgame.h"
 #include "imgui.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 #pragma comment(linker, "/ENTRY:main")
 
 namespace yg = yourgame; // convenience
+
+void* __cdecl
+operator new[](size_t size)
+{
+    if (size == 0)
+    {
+        size = 1;
+    }
+
+    void* p = malloc(size);
+    return p;
+}
+
+void* __cdecl
+operator new(size_t size)
+{
+    if (size == 0)
+    {
+        size = 1;
+    }
+
+    void* p = malloc(size);
+    return p;
+}
+
+void __cdecl
+operator delete(void* p)
+{
+    if (p)
+    {
+        free(p);
+    }
+}
+
+void __cdecl
+operator delete(void* p, size_t size)
+{
+    UNREFERENCED_PARAMETER(size);
+    if (p)
+    {
+        free(p);
+    }
+}
+
+void __cdecl
+operator delete[](_In_ void* p)
+{
+    if (p)
+    {
+        free(p);
+    }
+}
+
 
 namespace mygame
 {
