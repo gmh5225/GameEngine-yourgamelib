@@ -3,6 +3,9 @@ find_package(Git)
 
 set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
 
+add_definitions("-D_HAS_EXCEPTIONS=0")
+add_definitions("-D_STATIC_CPPLIB")
+
 # yourgame library project + version
 project(yourgame VERSION 0.0.0)
 

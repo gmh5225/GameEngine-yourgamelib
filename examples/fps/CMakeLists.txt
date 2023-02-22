@@ -8,6 +8,8 @@ find_package(Git)
 project(fps VERSION 0.0.1)
 
 set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
+add_definitions("-D_HAS_EXCEPTIONS=0")
+add_definitions("-D_STATIC_CPPLIB")
 
 # web platform only.
 # enable this option to copy assets (if any) into the wasm file system.

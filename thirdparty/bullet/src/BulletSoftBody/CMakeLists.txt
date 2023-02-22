@@ -8,6 +8,9 @@ ${BULLET_PHYSICS_SOURCE_DIR}/src
 
 set(CMAKE_CXX_FLAGS "-Xclang -mcmodel=large -Xclang -fno-jump-tables")
 
+add_definitions("-D_HAS_EXCEPTIONS=0")
+add_definitions("-D_STATIC_CPPLIB")
+
 SET(BulletSoftBody_SRCS
 	btSoftBody.cpp
 	btSoftBodyConcaveCollisionAlgorithm.cpp
