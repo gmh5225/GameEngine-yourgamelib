@@ -11,6 +11,24 @@ Visit <https://github.com/duddel/yourgamelib> for more information.
 - click examples\fps\build\build_desktop_release_clang.cmd
 - use vs2022 to open examples\fps\build\_build_release_clang\fps.sln
 - Fill Additional Dependencies
+
+
+
+/MD
+```
+ucrt.lib
+msvcrt.lib
+vcruntime.lib
+```
+
+/MT
+```
+libucrt.lib
+libcpmt.lib
+libvcruntime.lib
+```
+
+
 ```
 kernel32.lib
 user32.lib
