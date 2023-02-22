@@ -24,9 +24,9 @@ oleaut32.lib
 uuid.lib
 odbc32.lib
 odbccp32.lib
-ucrt.lib
-msvcrt.lib
-vcruntime.lib
+libucrt.lib
+libcpmt.lib
+libvcruntime.lib
 ```
 - Set Link Library Denpendencies
 
